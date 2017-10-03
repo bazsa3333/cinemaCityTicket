@@ -8,20 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		11061FC11F812307003591AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FC01F812307003591AC /* AppDelegate.swift */; };
-		11061FC31F812307003591AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FC21F812307003591AC /* ViewController.swift */; };
+		11061FC31F812307003591AC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FC21F812307003591AC /* MainVC.swift */; };
 		11061FC61F812307003591AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11061FC41F812307003591AC /* Main.storyboard */; };
 		11061FC81F812307003591AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11061FC71F812307003591AC /* Assets.xcassets */; };
 		11061FCB1F812307003591AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11061FC91F812307003591AC /* LaunchScreen.storyboard */; };
+		11061FD31F81252C003591AC /* CinemaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FD21F81252C003591AC /* CinemaCell.swift */; };
+		11061FD51F812C01003591AC /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FD41F812C01003591AC /* Cinema.swift */; };
+		11061FD71F812E21003591AC /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FD61F812E21003591AC /* Constans.swift */; };
+		11061FDE1F814849003591AC /* ShowingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FDD1F814849003591AC /* ShowingVC.swift */; };
+		11061FE01F814A78003591AC /* ShowingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FDF1F814A78003591AC /* ShowingCell.swift */; };
+		11061FE21F814C8F003591AC /* Showing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FE11F814C8F003591AC /* Showing.swift */; };
+		5A278B6E485613AB6D1BF828 /* Pods_Nemeth_Balint_Szakdolgozat_v1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CAEE46578065F761357B31 /* Pods_Nemeth_Balint_Szakdolgozat_v1.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		11061FBD1F812307003591AC /* Nemeth_Balint_Szakdolgozat_v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nemeth_Balint_Szakdolgozat_v1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11061FC01F812307003591AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		11061FC21F812307003591AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		11061FC21F812307003591AC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		11061FC51F812307003591AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11061FC71F812307003591AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11061FCA1F812307003591AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11061FCC1F812307003591AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11061FD21F81252C003591AC /* CinemaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaCell.swift; sourceTree = "<group>"; };
+		11061FD41F812C01003591AC /* Cinema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
+		11061FD61F812E21003591AC /* Constans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
+		11061FDD1F814849003591AC /* ShowingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowingVC.swift; sourceTree = "<group>"; };
+		11061FDF1F814A78003591AC /* ShowingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowingCell.swift; sourceTree = "<group>"; };
+		11061FE11F814C8F003591AC /* Showing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Showing.swift; sourceTree = "<group>"; };
+		3DC28804E7D6A0043088163B /* Pods-Nemeth_Balint_Szakdolgozat_v1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nemeth_Balint_Szakdolgozat_v1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nemeth_Balint_Szakdolgozat_v1/Pods-Nemeth_Balint_Szakdolgozat_v1.debug.xcconfig"; sourceTree = "<group>"; };
+		55CAEE46578065F761357B31 /* Pods_Nemeth_Balint_Szakdolgozat_v1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nemeth_Balint_Szakdolgozat_v1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2F5F82E127EE8FFA1A6DE70 /* Pods-Nemeth_Balint_Szakdolgozat_v1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nemeth_Balint_Szakdolgozat_v1.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nemeth_Balint_Szakdolgozat_v1/Pods-Nemeth_Balint_Szakdolgozat_v1.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A278B6E485613AB6D1BF828 /* Pods_Nemeth_Balint_Szakdolgozat_v1.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +57,8 @@
 			children = (
 				11061FBF1F812307003591AC /* Nemeth_Balint_Szakdolgozat_v1 */,
 				11061FBE1F812307003591AC /* Products */,
+				96A293F65198527AC5DB8CFF /* Pods */,
+				FE4E8F43259F68EFDDEE7E96 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +73,77 @@
 		11061FBF1F812307003591AC /* Nemeth_Balint_Szakdolgozat_v1 */ = {
 			isa = PBXGroup;
 			children = (
+				11061FDC1F814759003591AC /* Util */,
+				11061FDB1F81473B003591AC /* Resources */,
+				11061FDA1F81472F003591AC /* View */,
+				11061FD91F81472B003591AC /* Controller */,
+				11061FD81F814724003591AC /* Model */,
 				11061FC01F812307003591AC /* AppDelegate.swift */,
-				11061FC21F812307003591AC /* ViewController.swift */,
 				11061FC41F812307003591AC /* Main.storyboard */,
 				11061FC71F812307003591AC /* Assets.xcassets */,
 				11061FC91F812307003591AC /* LaunchScreen.storyboard */,
 				11061FCC1F812307003591AC /* Info.plist */,
 			);
 			path = Nemeth_Balint_Szakdolgozat_v1;
+			sourceTree = "<group>";
+		};
+		11061FD81F814724003591AC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11061FD41F812C01003591AC /* Cinema.swift */,
+				11061FE11F814C8F003591AC /* Showing.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		11061FD91F81472B003591AC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				11061FC21F812307003591AC /* MainVC.swift */,
+				11061FDD1F814849003591AC /* ShowingVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		11061FDA1F81472F003591AC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				11061FD21F81252C003591AC /* CinemaCell.swift */,
+				11061FDF1F814A78003591AC /* ShowingCell.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		11061FDB1F81473B003591AC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		11061FDC1F814759003591AC /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				11061FD61F812E21003591AC /* Constans.swift */,
+			);
+			name = Util;
+			sourceTree = "<group>";
+		};
+		96A293F65198527AC5DB8CFF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3DC28804E7D6A0043088163B /* Pods-Nemeth_Balint_Szakdolgozat_v1.debug.xcconfig */,
+				F2F5F82E127EE8FFA1A6DE70 /* Pods-Nemeth_Balint_Szakdolgozat_v1.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FE4E8F43259F68EFDDEE7E96 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				55CAEE46578065F761357B31 /* Pods_Nemeth_Balint_Szakdolgozat_v1.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +153,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11061FCF1F812307003591AC /* Build configuration list for PBXNativeTarget "Nemeth_Balint_Szakdolgozat_v1" */;
 			buildPhases = (
+				80F89CDCB8F1A84BA6C47890 /* [CP] Check Pods Manifest.lock */,
 				11061FB91F812307003591AC /* Sources */,
 				11061FBA1F812307003591AC /* Frameworks */,
 				11061FBB1F812307003591AC /* Resources */,
+				318AD11E76EA25089513D09F /* [CP] Embed Pods Frameworks */,
+				75BF5B26CA214DA43AF63EE7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -132,13 +217,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		318AD11E76EA25089513D09F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nemeth_Balint_Szakdolgozat_v1/Pods-Nemeth_Balint_Szakdolgozat_v1-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75BF5B26CA214DA43AF63EE7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Nemeth_Balint_Szakdolgozat_v1/Pods-Nemeth_Balint_Szakdolgozat_v1-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80F89CDCB8F1A84BA6C47890 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		11061FB91F812307003591AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11061FC31F812307003591AC /* ViewController.swift in Sources */,
+				11061FD51F812C01003591AC /* Cinema.swift in Sources */,
+				11061FDE1F814849003591AC /* ShowingVC.swift in Sources */,
+				11061FC31F812307003591AC /* MainVC.swift in Sources */,
+				11061FD71F812E21003591AC /* Constans.swift in Sources */,
+				11061FE01F814A78003591AC /* ShowingCell.swift in Sources */,
 				11061FC11F812307003591AC /* AppDelegate.swift in Sources */,
+				11061FD31F81252C003591AC /* CinemaCell.swift in Sources */,
+				11061FE21F814C8F003591AC /* Showing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +400,7 @@
 		};
 		11061FD01F812307003591AC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3DC28804E7D6A0043088163B /* Pods-Nemeth_Balint_Szakdolgozat_v1.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AF8XNTNU2S;
@@ -274,6 +414,7 @@
 		};
 		11061FD11F812307003591AC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2F5F82E127EE8FFA1A6DE70 /* Pods-Nemeth_Balint_Szakdolgozat_v1.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AF8XNTNU2S;
@@ -304,6 +445,7 @@
 				11061FD11F812307003591AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var cinemas = [Cinema]()
     
@@ -38,9 +38,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                         
                         if let name = sites[x]["sn"] {
                             
-                            let ci = Cinema(name: name as! String)
+                            let ci = Cinema(name: name as! String, pos: x)
                             self.cinemas.append(ci)
-                            print("BALINT: \(ci.name)")
+                            //teszteléshez
+                            //print("BALINT: \(ci.name)")
                         }
                     }
                     self.tableView.reloadData()
@@ -62,6 +63,29 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             return CinemaCell()
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var cinema: Cinema!
+        
+        cinema = cinemas[indexPath.row]
+        
+        performSegue(withIdentifier: "ShowingVC", sender: cinema)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ShowingVC" {
+            
+            if let showingVC = segue.destination as? ShowingVC {
+                
+                if let cinema = sender as? Cinema {
+                    
+                    showingVC.cinema = cinema
+                }
+            }
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

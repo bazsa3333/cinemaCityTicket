@@ -1,5 +1,5 @@
 //
-//  CinemaCell.swift
+//  ShowingCell.swift
 //  Nemeth_Balint_Szakdolgozat_v1
 //
 //  Created by Bálint Németh on 2017. 10. 01..
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class CinemaCell: UITableViewCell {
-
-    @IBOutlet weak var lbl: UILabel!
+class ShowingCell: UITableViewCell {
     
-    func configureCell(cinema: Cinema){
+    @IBOutlet weak var lbl: UILabel!
+
+    func configureCell(showing: Showing){
         
-        lbl.text = cinema.name
+        lbl.text = showing.name
     }
 }

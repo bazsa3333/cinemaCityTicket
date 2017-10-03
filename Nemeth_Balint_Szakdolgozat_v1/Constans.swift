@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+let BASE_URL = "http://www.cinemacity.hu/presentationsJSON"
+
+typealias DownloadComplete = () -> ()
