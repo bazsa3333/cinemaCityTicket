@@ -10,4 +10,6 @@ import Foundation
 
 let BASE_URL = "http://www.cinemacity.hu/presentationsJSON"
 
+let KEY_UID = "uid"
+
 typealias DownloadComplete = () -> ()

@@ -7,4 +7,10 @@ target 'Nemeth_Balint_Szakdolgozat_v1' do
 
   # Pods for Nemeth_Balint_Szakdolgozat_v1
   pod 'Alamofire', '~> 4.5'
+  pod ‘Firebase/Core’
+  pod ‘Firebase/Auth’
+  pod ‘Firebase/Database’
+  pod ‘Firebase/Storage’
+  pod 'FBSDKLoginKit'
+  pod 'SwiftKeychainWrapper'
 end

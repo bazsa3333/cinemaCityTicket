@@ -18,6 +18,10 @@
 		11061FDE1F814849003591AC /* MovieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FDD1F814849003591AC /* MovieVC.swift */; };
 		11061FE01F814A78003591AC /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FDF1F814A78003591AC /* MovieCell.swift */; };
 		11061FE21F814C8F003591AC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FE11F814C8F003591AC /* Movie.swift */; };
+		112FAD8B1F9E4C6700611335 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112FAD8A1F9E4C6700611335 /* SignInVC.swift */; };
+		112FAD8D1F9E507600611335 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 112FAD8C1F9E507600611335 /* GoogleService-Info.plist */; };
+		112FAD8F1F9E551000611335 /* ResponseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112FAD8E1F9E551000611335 /* ResponseVC.swift */; };
+		112FAD921F9E5A6400611335 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112FAD911F9E5A6400611335 /* DataService.swift */; };
 		119D52391F84092600F13C01 /* ShowingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D52381F84092600F13C01 /* ShowingVC.swift */; };
 		119D523B1F84094400F13C01 /* ShowingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D523A1F84094400F13C01 /* ShowingCell.swift */; };
 		119D523D1F84095100F13C01 /* Showing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D523C1F84095100F13C01 /* Showing.swift */; };
@@ -38,6 +42,10 @@
 		11061FDD1F814849003591AC /* MovieVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieVC.swift; sourceTree = "<group>"; };
 		11061FDF1F814A78003591AC /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		11061FE11F814C8F003591AC /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		112FAD8A1F9E4C6700611335 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		112FAD8C1F9E507600611335 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		112FAD8E1F9E551000611335 /* ResponseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseVC.swift; sourceTree = "<group>"; };
+		112FAD911F9E5A6400611335 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		119D52381F84092600F13C01 /* ShowingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowingVC.swift; sourceTree = "<group>"; };
 		119D523A1F84094400F13C01 /* ShowingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowingCell.swift; sourceTree = "<group>"; };
 		119D523C1F84095100F13C01 /* Showing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Showing.swift; sourceTree = "<group>"; };
@@ -79,6 +87,7 @@
 		11061FBF1F812307003591AC /* Nemeth_Balint_Szakdolgozat_v1 */ = {
 			isa = PBXGroup;
 			children = (
+				112FAD901F9E5A5400611335 /* Service */,
 				11061FDC1F814759003591AC /* Util */,
 				11061FDB1F81473B003591AC /* Resources */,
 				11061FDA1F81472F003591AC /* View */,
@@ -88,6 +97,7 @@
 				11061FC41F812307003591AC /* Main.storyboard */,
 				11061FC71F812307003591AC /* Assets.xcassets */,
 				11061FC91F812307003591AC /* LaunchScreen.storyboard */,
+				112FAD8C1F9E507600611335 /* GoogleService-Info.plist */,
 				11061FCC1F812307003591AC /* Info.plist */,
 			);
 			path = Nemeth_Balint_Szakdolgozat_v1;
@@ -109,6 +119,8 @@
 				11061FC21F812307003591AC /* MainVC.swift */,
 				11061FDD1F814849003591AC /* MovieVC.swift */,
 				119D52381F84092600F13C01 /* ShowingVC.swift */,
+				112FAD8A1F9E4C6700611335 /* SignInVC.swift */,
+				112FAD8E1F9E551000611335 /* ResponseVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -136,6 +148,14 @@
 				11061FD61F812E21003591AC /* Constans.swift */,
 			);
 			name = Util;
+			sourceTree = "<group>";
+		};
+		112FAD901F9E5A5400611335 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				112FAD911F9E5A6400611335 /* DataService.swift */,
+			);
+			name = Service;
 			sourceTree = "<group>";
 		};
 		96A293F65198527AC5DB8CFF /* Pods */ = {
@@ -219,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11061FCB1F812307003591AC /* LaunchScreen.storyboard in Resources */,
+				112FAD8D1F9E507600611335 /* GoogleService-Info.plist in Resources */,
 				11061FC81F812307003591AC /* Assets.xcassets in Resources */,
 				11061FC61F812307003591AC /* Main.storyboard in Resources */,
 			);
@@ -280,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11061FD51F812C01003591AC /* Cinema.swift in Sources */,
+				112FAD921F9E5A6400611335 /* DataService.swift in Sources */,
 				11061FDE1F814849003591AC /* MovieVC.swift in Sources */,
 				11061FC31F812307003591AC /* MainVC.swift in Sources */,
 				119D523D1F84095100F13C01 /* Showing.swift in Sources */,
@@ -289,7 +311,9 @@
 				119D52391F84092600F13C01 /* ShowingVC.swift in Sources */,
 				119D523B1F84094400F13C01 /* ShowingCell.swift in Sources */,
 				11061FD31F81252C003591AC /* CinemaCell.swift in Sources */,
+				112FAD8B1F9E4C6700611335 /* SignInVC.swift in Sources */,
 				11061FE21F814C8F003591AC /* Movie.swift in Sources */,
+				112FAD8F1F9E551000611335 /* ResponseVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
