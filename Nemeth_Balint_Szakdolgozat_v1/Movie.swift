@@ -8,17 +8,31 @@
 
 import Foundation
 
-class Showing {
+class Movie {
     
     private var _name: String!
+    private var _moviePos: Int!
+    private var _cinemaPos: Int!
     
     var name: String {
         
         return _name
     }
     
-    init(name: String) {
+    var moviePos: Int {
+        
+        return _moviePos
+    }
+    
+    var cinemaPos: Int {
+        
+        return _cinemaPos
+    }
+    
+    init(name: String, moviePos: Int, cinemaPos: Int) {
         
         self._name = name
+        self._moviePos = moviePos
+        self._cinemaPos = cinemaPos
     }
 }

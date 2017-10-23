@@ -71,18 +71,18 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         cinema = cinemas[indexPath.row]
         
-        performSegue(withIdentifier: "ShowingVC", sender: cinema)
+        performSegue(withIdentifier: "MovieVC", sender: cinema)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "ShowingVC" {
+        if segue.identifier == "MovieVC" {
             
-            if let showingVC = segue.destination as? ShowingVC {
+            if let movieVC = segue.destination as? MovieVC {
                 
                 if let cinema = sender as? Cinema {
                     
-                    showingVC.cinema = cinema
+                    movieVC.cinema = cinema
                 }
             }
         }

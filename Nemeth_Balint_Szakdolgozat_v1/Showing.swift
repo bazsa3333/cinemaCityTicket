@@ -7,3 +7,25 @@
 //
 
 import Foundation
+
+class Showing {
+    
+    private var _date: String!
+    private var _time: String!
+    
+    var date: String {
+        
+        return _date
+    }
+    
+    var time: String {
+        
+        return _time
+    }
+    
+    init(date: String, time: String) {
+        
+        self._date = date
+        self._time = time
+    }
+}

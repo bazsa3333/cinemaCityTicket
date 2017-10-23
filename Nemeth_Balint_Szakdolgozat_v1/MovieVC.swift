@@ -9,12 +9,12 @@
 import UIKit
 import Alamofire
 
-class ShowingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MovieVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
 
     var cinema: Cinema!
-    var movies = [Showing]()
+    var movies = [Movie]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,10 +22,10 @@ class ShowingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         
-        parseShowings()
+        parseMovies()
     }
     
-    func parseShowings() {
+    func parseMovies() {
         
         Alamofire.request(BASE_URL).responseJSON { response in
             
@@ -41,7 +41,7 @@ class ShowingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             
                             if let movieName = movieNames[x]["fn"] {
                                 
-                                let movie = Showing(name: movieName as! String)
+                                let movie = Movie(name: movieName as! String, moviePos: x, cinemaPos: self.cinema.pos)
                                 self.movies.append(movie)
                                 print("BALINT: \(movie.name)")
                                 
@@ -57,15 +57,38 @@ class ShowingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "ShowingCell", for: indexPath) as? ShowingCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieCell {
             
             let movie = movies[indexPath.row]
-            cell.configureCell(showing: movie)
+            cell.configureCell(movie: movie)
             
             return cell
         }else {
             
-            return ShowingCell()
+            return MovieCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var movie: Movie!
+        
+        movie = movies[indexPath.row]
+        
+        performSegue(withIdentifier: "ShowingVC", sender: movie)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ShowingVC" {
+            
+            if let showingVC = segue.destination as? ShowingVC {
+                
+                if let movie = sender as? Movie {
+                    
+                    showingVC.movie = movie
+                }
+            }
         }
     }
     
@@ -84,8 +107,8 @@ class ShowingVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return 60
     }
     
-    @IBAction func backBtnPressed(_ sender: Any) {
-        
-        dismiss(animated: true, completion: nil)
-    }
+//    @IBAction func backBtnPressed(_ sender: Any) {
+//        
+//        dismiss(animated: true, completion: nil)
+//    }
 }

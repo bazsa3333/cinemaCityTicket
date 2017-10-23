@@ -9,16 +9,13 @@
 import UIKit
 
 class ShowingCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    
+    @IBOutlet weak var dateLbl: UILabel!
+    @IBOutlet weak var timeLbl: UILabel!
+    
+    func configureCell(showing: Showing) {
+        
+        dateLbl.text = showing.date
+        timeLbl.text = showing.time
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }

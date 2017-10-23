@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ShowingCell: UITableViewCell {
+class MovieCell: UITableViewCell {
     
     @IBOutlet weak var lbl: UILabel!
 
-    func configureCell(showing: Showing){
+    func configureCell(movie: Movie){
         
-        lbl.text = showing.name
+        lbl.text = movie.name
     }
 }
