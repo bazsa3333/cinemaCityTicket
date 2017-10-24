@@ -18,6 +18,7 @@
 		11061FDE1F814849003591AC /* MovieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FDD1F814849003591AC /* MovieVC.swift */; };
 		11061FE01F814A78003591AC /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FDF1F814A78003591AC /* MovieCell.swift */; };
 		11061FE21F814C8F003591AC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FE11F814C8F003591AC /* Movie.swift */; };
+		112790521F9FD2FD005C36AD /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112790511F9FD2FD005C36AD /* RegisterVC.swift */; };
 		112FAD8B1F9E4C6700611335 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112FAD8A1F9E4C6700611335 /* SignInVC.swift */; };
 		112FAD8D1F9E507600611335 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 112FAD8C1F9E507600611335 /* GoogleService-Info.plist */; };
 		112FAD8F1F9E551000611335 /* ResponseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112FAD8E1F9E551000611335 /* ResponseVC.swift */; };
@@ -42,6 +43,7 @@
 		11061FDD1F814849003591AC /* MovieVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieVC.swift; sourceTree = "<group>"; };
 		11061FDF1F814A78003591AC /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		11061FE11F814C8F003591AC /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		112790511F9FD2FD005C36AD /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		112FAD8A1F9E4C6700611335 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		112FAD8C1F9E507600611335 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		112FAD8E1F9E551000611335 /* ResponseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseVC.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				119D52381F84092600F13C01 /* ShowingVC.swift */,
 				112FAD8A1F9E4C6700611335 /* SignInVC.swift */,
 				112FAD8E1F9E551000611335 /* ResponseVC.swift */,
+				112790511F9FD2FD005C36AD /* RegisterVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				11061FE01F814A78003591AC /* MovieCell.swift in Sources */,
 				11061FC11F812307003591AC /* AppDelegate.swift in Sources */,
 				119D52391F84092600F13C01 /* ShowingVC.swift in Sources */,
+				112790521F9FD2FD005C36AD /* RegisterVC.swift in Sources */,
 				119D523B1F84094400F13C01 /* ShowingCell.swift in Sources */,
 				11061FD31F81252C003591AC /* CinemaCell.swift in Sources */,
 				112FAD8B1F9E4C6700611335 /* SignInVC.swift in Sources */,

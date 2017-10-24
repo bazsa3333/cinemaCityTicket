@@ -271,7 +271,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CcZ-rH-RHF">
                                                 <rect key="frame" x="19" y="45" width="283" height="30"/>
@@ -282,7 +282,7 @@
                                                 </constraints>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dgu-T1-7P1">
                                                 <rect key="frame" x="27" y="90" width="267" height="50"/>
@@ -291,6 +291,9 @@
                                                     <constraint firstAttribute="height" constant="50" id="VnE-l2-4JB"/>
                                                 </constraints>
                                                 <state key="normal" image="LogInBtn"/>
+                                                <connections>
+                                                    <action selector="logInBtnTapped:" destination="eUw-gc-lBS" eventType="touchUpInside" id="eHO-D4-EwS"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49U-dg-lzc">
                                                 <rect key="frame" x="0.0" y="155" width="321" height="50"/>
@@ -305,10 +308,25 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjB-lN-2Ke">
+                                        <rect key="frame" x="54" y="557" width="267" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="267" id="4dL-DO-3YA"/>
+                                            <constraint firstAttribute="height" constant="50" id="HDw-9v-yq4"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Kj9-3U-sHf"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="267" id="YSr-5d-q4t"/>
+                                        </constraints>
+                                        <state key="normal" image="SignUpBtn"/>
+                                        <connections>
+                                            <action selector="logInBtnTapped:" destination="eUw-gc-lBS" eventType="touchUpInside" id="04X-SG-jqf"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="BjB-lN-2Ke" firstAttribute="centerX" secondItem="VYD-45-NGb" secondAttribute="centerX" id="39C-lU-8qd"/>
                                     <constraint firstItem="iG0-BS-S43" firstAttribute="centerY" secondItem="VYD-45-NGb" secondAttribute="centerY" id="exB-Y8-jrO"/>
+                                    <constraint firstAttribute="bottom" secondItem="BjB-lN-2Ke" secondAttribute="bottom" constant="60" id="iEA-JD-hg7"/>
                                     <constraint firstItem="iG0-BS-S43" firstAttribute="centerX" secondItem="VYD-45-NGb" secondAttribute="centerX" id="ltB-rc-K6b"/>
                                 </constraints>
                             </view>
@@ -330,6 +348,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oiq-R7-Yzk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="106.40000000000001" y="884.70764617691157"/>
+        </scene>
+        <!--RegisterVC-->
+        <scene sceneID="6Lq-pB-c5D">
+            <objects>
+                <viewController id="8gj-oO-bKf" customClass="RegisterVC" customModule="Nemeth_Balint_Szakdolgozat_v1" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="65q-ly-tdO"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Jf-Mg-Duy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G0E-9Y-bzV">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Z4-Hp-0L4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="106" y="1590"/>
         </scene>
         <!--ResponseVC-->
         <scene sceneID="fQX-uT-7r7">
@@ -398,5 +434,6 @@
         <image name="FacebookBtn" width="267" height="50"/>
         <image name="LogInBtn" width="267" height="50"/>
         <image name="SignOutBtn" width="267" height="50"/>
+        <image name="SignUpBtn" width="267" height="50"/>
     </resources>
 </document>
