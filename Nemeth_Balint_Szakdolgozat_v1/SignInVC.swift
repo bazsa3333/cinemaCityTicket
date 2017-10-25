@@ -76,7 +76,7 @@ class SignInVC: UIViewController {
                         
                         if errorCode == AuthErrorCode.userNotFound {
                             
-                            let alert = UIAlertController(title: "User not found", message: "You must register if you don't have an account", preferredStyle: .alert)
+                            let alert = UIAlertController(title: "User not found", message: "You can register if you don't have an account", preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                             self.present(alert, animated: true, completion: nil)
                         } else if errorCode == AuthErrorCode.wrongPassword {
@@ -145,6 +145,11 @@ class SignInVC: UIViewController {
         print("BALINT Data saved to keychainresult: \(keychainResult)")
         
         performSegue(withIdentifier: "ResponseVC", sender: nil)
+    }
+    
+    @IBAction func registerBtnPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "RegisterVC", sender: nil)
     }
 
 }
