@@ -27,11 +27,11 @@ class SignInVC: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         
-        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
-            
-            print("BALINT: ID found in keychain")
-            performSegue(withIdentifier: "ResponseVC", sender: nil)
-        }
+//        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+//            
+//            print("BALINT: ID found in keychain")
+//            performSegue(withIdentifier: "ResponseVC", sender: nil)
+//        }
     }
     
     @IBAction func facebookBtnTapped(_ sender: Any) {
@@ -43,10 +43,10 @@ class SignInVC: UIViewController {
             if error != nil {
                 
                 print("BALINT: Unable to authenticate with Facebook")
-            }else if result?.isCancelled == true {
+            } else if result?.isCancelled == true {
                 
                 print("BALINT: User cancelled Facebook authentication")
-            }else {
+            } else {
                 
                 print("BALINT: Succesfully authenticated with Facebook")
                 let credential = FacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
@@ -105,22 +105,24 @@ class SignInVC: UIViewController {
     
     func firebaseAuth(_ credential: AuthCredential) {
         
-        Auth.auth().signIn(with: credential) { (user, error) in
-            
+        Auth.auth().signIn(with: credential, completion: { (user, error) in
             if error != nil {
                 
                 print("BALINT: Unable to authenticate with Firebase")
-            }else {
+            } else {
                 
                 print("BALINT: Succesfully authenticated with Firebase")
                 
                 if let user = user {
                     
-                    let userData = ["provider": credential.provider]
-                    self.completeSignIn(id: user.uid, userData: userData)
+                    let userData = ["provider": credential.provider,
+                                    "name": Auth.auth().currentUser?.displayName,
+                                    "email": Auth.auth().currentUser?.email]
+                    self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
                 }
+                
             }
-        }
+        })
     }
     
     func completeSignIn(id: String, userData: Dictionary<String, String>) {
@@ -129,27 +131,18 @@ class SignInVC: UIViewController {
         
         let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         
-        //email confirmation...
-//        let user = Auth.auth().currentUser
-//        user?.sendEmailVerification(completion: { (error) in
-//            
-//            if (error != nil) {
-//                
-//                print("BALINT: Error occured sending the verification email")
-//            } else {
-//                
-//                print("BALINT: Email was sent succesfully")
-//            }
-//        })
+        let email = Auth.auth().currentUser!.email
         
         print("BALINT Data saved to keychainresult: \(keychainResult)")
         
-        performSegue(withIdentifier: "ResponseVC", sender: nil)
+        print(email!)
+        performSegue(withIdentifier: "backToStartVC", sender: nil)
     }
     
-    @IBAction func registerBtnPressed(_ sender: Any) {
+    
+    @IBAction func signUpBtnPressed(_ sender: Any) {
         
         performSegue(withIdentifier: "RegisterVC", sender: nil)
     }
-
+    
 }

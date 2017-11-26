@@ -23,6 +23,8 @@
 		112FAD8D1F9E507600611335 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 112FAD8C1F9E507600611335 /* GoogleService-Info.plist */; };
 		112FAD8F1F9E551000611335 /* ResponseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112FAD8E1F9E551000611335 /* ResponseVC.swift */; };
 		112FAD921F9E5A6400611335 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112FAD911F9E5A6400611335 /* DataService.swift */; };
+		11752EBB1FCB33B000A3156F /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11752EBA1FCB33B000A3156F /* CheckBox.swift */; };
+		11752EBF1FCB483000A3156F /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11752EBE1FCB483000A3156F /* StartVC.swift */; };
 		119D52391F84092600F13C01 /* ShowingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D52381F84092600F13C01 /* ShowingVC.swift */; };
 		119D523B1F84094400F13C01 /* ShowingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D523A1F84094400F13C01 /* ShowingCell.swift */; };
 		119D523D1F84095100F13C01 /* Showing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D523C1F84095100F13C01 /* Showing.swift */; };
@@ -48,6 +50,8 @@
 		112FAD8C1F9E507600611335 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		112FAD8E1F9E551000611335 /* ResponseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseVC.swift; sourceTree = "<group>"; };
 		112FAD911F9E5A6400611335 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		11752EBA1FCB33B000A3156F /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		11752EBE1FCB483000A3156F /* StartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
 		119D52381F84092600F13C01 /* ShowingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowingVC.swift; sourceTree = "<group>"; };
 		119D523A1F84094400F13C01 /* ShowingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowingCell.swift; sourceTree = "<group>"; };
 		119D523C1F84095100F13C01 /* Showing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Showing.swift; sourceTree = "<group>"; };
@@ -111,6 +115,7 @@
 				11061FD41F812C01003591AC /* Cinema.swift */,
 				11061FE11F814C8F003591AC /* Movie.swift */,
 				119D523C1F84095100F13C01 /* Showing.swift */,
+				11752EBA1FCB33B000A3156F /* CheckBox.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -118,12 +123,13 @@
 		11061FD91F81472B003591AC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				11752EBE1FCB483000A3156F /* StartVC.swift */,
 				11061FC21F812307003591AC /* MainVC.swift */,
 				11061FDD1F814849003591AC /* MovieVC.swift */,
 				119D52381F84092600F13C01 /* ShowingVC.swift */,
 				112FAD8A1F9E4C6700611335 /* SignInVC.swift */,
-				112FAD8E1F9E551000611335 /* ResponseVC.swift */,
 				112790511F9FD2FD005C36AD /* RegisterVC.swift */,
+				112FAD8E1F9E551000611335 /* ResponseVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -303,6 +309,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11752EBB1FCB33B000A3156F /* CheckBox.swift in Sources */,
+				11752EBF1FCB483000A3156F /* StartVC.swift in Sources */,
 				11061FD51F812C01003591AC /* Cinema.swift in Sources */,
 				112FAD921F9E5A6400611335 /* DataService.swift in Sources */,
 				11061FDE1F814849003591AC /* MovieVC.swift in Sources */,
