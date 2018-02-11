@@ -22,6 +22,8 @@ class DataService {
     //DB references
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.child("users")
+    private var _REF_CITIES = DB_BASE.child("cities")
+    private var _REF_CINEMAS = DB_BASE.child("cinemas")
     
     var REF_BASE: DatabaseReference {
         return _REF_BASE
@@ -29,6 +31,16 @@ class DataService {
     
     var REF_USERS: DatabaseReference {
         return _REF_USERS
+    }
+    
+    var REF_CITIES: DatabaseReference {
+        
+        return _REF_CITIES
+    }
+    
+    var REF_CINEMAS: DatabaseReference {
+        
+        return _REF_CINEMAS
     }
     
     func createFirebaseDBUser(uid: String, userData: Dictionary<String, String>) {

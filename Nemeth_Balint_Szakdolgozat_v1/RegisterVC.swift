@@ -13,7 +13,8 @@ import SwiftKeychainWrapper
 class RegisterVC: UIViewController {
 
     
-    @IBOutlet weak var fullNameField: UITextField!
+    @IBOutlet weak var firstNameField: UITextField!
+    @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var emailAddressField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var checkImg: CheckBox!
@@ -26,7 +27,7 @@ class RegisterVC: UIViewController {
 
     @IBAction func registerBtnPressed(_ sender: Any) {
         
-        guard ((fullNameField.text?.characters.count)! > 0) && ((emailAddressField.text?.characters.count)! > 0) && ((passwordField.text?.characters.count)! > 0) else {
+        guard ((firstNameField.text?.characters.count)! > 0) && ((lastNameField.text?.characters.count)! > 0) && ((emailAddressField.text?.characters.count)! > 0) && ((passwordField.text?.characters.count)! > 0) else {
             let alert = UIAlertController(title: "Missing information", message: "You must enter all the informations!", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alert, animated: true, completion: nil)
@@ -34,59 +35,61 @@ class RegisterVC: UIViewController {
             return
         }
         
-        if let name = fullNameField.text , (name.characters.count > 0) {
-            
-            if let email = emailAddressField.text , (email.characters.count > 0) {
-                
-                if isValidEmail(testStr: email) {
+        if let firstName = firstNameField.text , (firstName.characters.count > 0) {
+            if let lastName = lastNameField.text, (lastName.characters.count > 0) {
+                if let email = emailAddressField.text , (email.characters.count > 0) {
                     
-                    if let password = passwordField.text {
+                    if isValidEmail(testStr: email) {
                         
-                        if password.characters.count > 5 {
+                        if let password = passwordField.text {
                             
-                            if checkImg.isChecked == false {
+                            if password.characters.count > 5 {
                                 
-                                let alert = UIAlertController(title: "Terms and conditions", message: "You must accept the terms and conditions", preferredStyle: .alert)
-                                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                                self.present(alert, animated: true, completion: nil)
+                                if checkImg.isChecked == false {
+                                    
+                                    let alert = UIAlertController(title: "Terms and conditions", message: "You must accept the terms and conditions", preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                                    self.present(alert, animated: true, completion: nil)
+                                } else {
+                                    
+                                    Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+                                        
+                                        if error != nil {
+                                        
+                                            let alert = UIAlertController(title: "There was a problem authenticating", message: "\(error?.localizedDescription)", preferredStyle: .alert)
+                                            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                                            self.present(alert, animated: true, completion: nil)
+                                        } else {
+                                        
+                                            print("RITA: Succesfully created an account")
+                                        
+                                            if let user = user {
+                                        
+                                                let userData = ["provider": user.providerID,
+                                                                "name": (firstName + " " + lastName),
+                                                                "email": email]
+                                                self.completeSignIn(id: user.uid, userData: userData)
+                                            }
+                                        }
+                                    })
+                                }
+                                
                             } else {
                                 
-                                Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-                                    
-                                    if error != nil {
-                                    
-                                        let alert = UIAlertController(title: "There was a problem authenticating", message: "\(error?.localizedDescription)", preferredStyle: .alert)
-                                        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                                        self.present(alert, animated: true, completion: nil)
-                                    } else {
-                                    
-                                        print("RITA: Succesfully created an account")
-                                    
-                                        if let user = user {
-                                    
-                                            let userData = ["provider": user.providerID,
-                                                            "name": name,
-                                                            "email": email]
-                                            self.completeSignIn(id: user.uid, userData: userData)
-                                        }
-                                    }
-                                })
+                                let alert = UIAlertController(title: "Error", message: "The lenght of your password is needed to be 6 charachters or more!", preferredStyle: .alert)
+                                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                                self.present(alert, animated: true, completion: nil)
                             }
-                            
-                        } else {
-                            
-                            let alert = UIAlertController(title: "Error", message: "The lenght of your password is needed to be 6 charachters or more!", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                            self.present(alert, animated: true, completion: nil)
                         }
+                        
+                    } else {
+                        
+                        let alert = UIAlertController(title: "Invalid email!", message: "You entered an invalid email address", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
                     }
-                    
-                } else {
-                    
-                    let alert = UIAlertController(title: "Invalid email!", message: "You entered an invalid email address", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
                 }
+                
             }
         }
     }
@@ -132,5 +135,9 @@ class RegisterVC: UIViewController {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         let result = emailTest.evaluate(with: testStr)
         return result
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
