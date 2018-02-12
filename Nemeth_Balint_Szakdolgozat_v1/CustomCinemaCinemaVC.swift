@@ -40,8 +40,16 @@ class CustomCinemaCinemaVC: UIViewController, UITableViewDelegate, UITableViewDa
                         let cinemaObject = cinemaNames.value as? [String: AnyObject]
                         let name = cinemaObject?["name"]
                         
-                        let cinema = CustomCinemaCinema(name: name as! String)
-                        self.cinemas.append(cinema)
+                        if let movies = cinemaObject?["movies"] as? [Dictionary<String, AnyObject>], movies.count > 0 {
+                            
+                            for x in 0..<movies.count {
+                                
+                                let id = movies[x]["id"]
+                                
+                                let cinema = CustomCinemaCinema(name: name as! String, id: id as! String)
+                                self.cinemas.append(cinema)
+                            }
+                        }
                     }
                 }
             }
@@ -60,6 +68,28 @@ class CustomCinemaCinemaVC: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             
             return CustomCinemaCinemaCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var cinema: CustomCinemaCinema!
+        cinema = cinemas[indexPath.row]
+        
+        performSegue(withIdentifier: "CustomCinemaMovie", sender: cinema)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "CustomCinemaMovie" {
+            
+            if let customCinemaMovieVC = segue.destination as? CustomCinemaMoviesVC {
+                
+                if let cinema = sender as? CustomCinemaCinema {
+                    
+                    customCinemaMovieVC.cinema = cinema
+                }
+            }
         }
     }
     

@@ -565,7 +565,7 @@
                                 <rect key="frame" x="0.0" y="164" width="375" height="503"/>
                                 <color key="backgroundColor" red="0.8168148398399353" green="0.81743925809860229" blue="0.81691151857376099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCinemaCitiesCell" rowHeight="80" id="Lt3-sc-lee" customClass="CustomCinemaCitiesCell" customModule="Nemeth_Balint_Szakdolgozat_v1" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomCinemaCitiesCell" rowHeight="80" id="Lt3-sc-lee" customClass="CustomCinemaCitiesCell" customModule="Nemeth_Balint_Szakdolgozat_v1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Lt3-sc-lee" id="dka-mk-7tg">
@@ -665,7 +665,7 @@
                                 <rect key="frame" x="0.0" y="164" width="375" height="503"/>
                                 <color key="backgroundColor" red="0.81681483980000003" green="0.81743925809999995" blue="0.8169115186" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomCinemaCinemaCell" rowHeight="80" id="JKh-gx-mBb" customClass="CustomCinemaCinemaCell" customModule="Nemeth_Balint_Szakdolgozat_v1" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomCinemaCinemaCell" rowHeight="80" id="JKh-gx-mBb" customClass="CustomCinemaCinemaCell" customModule="Nemeth_Balint_Szakdolgozat_v1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JKh-gx-mBb" id="uGo-hm-Vb4">
@@ -742,7 +742,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="8nu-LO-pe5" id="ySJ-da-AVM"/>
-                        <segue destination="2lf-Zw-bSx" kind="show" id="xzb-2x-ZTj"/>
+                        <segue destination="2lf-Zw-bSx" kind="show" identifier="CustomCinemaMovie" id="xzb-2x-ZTj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A4g-Oj-2aE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -782,7 +782,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.81681483980000003" green="0.81743925809999995" blue="0.8169115186" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="PKy-el-tX7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="CustomCinemaMovieCell" rowHeight="80" id="PKy-el-tX7" customClass="CustomCinemaMovieCell" customModule="Nemeth_Balint_Szakdolgozat_v1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PKy-el-tX7" id="jgE-lO-9NT">
@@ -822,6 +822,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.81681483980000003" green="0.81743925809999995" blue="0.8169115186" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <outlet property="lbl" destination="b0R-IR-kFc" id="QSz-zM-HAe"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -837,6 +840,9 @@
                             <constraint firstItem="67q-eq-fH8" firstAttribute="leading" secondItem="Jix-5S-Ci7" secondAttribute="leading" id="jBB-tM-ooZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="d8u-X2-kzJ" id="TKi-eX-Hny"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQA-j1-9Kl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -35,6 +35,8 @@
 		11A00E88202F16ED00A2E20C /* CustomCinemaCitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00E87202F16ED00A2E20C /* CustomCinemaCitiesCell.swift */; };
 		11A00E8A202F182400A2E20C /* CustomCinemaCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00E89202F182400A2E20C /* CustomCinemaCity.swift */; };
 		11A00E8C202F18F100A2E20C /* CustomCinemaCitiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00E8B202F18F100A2E20C /* CustomCinemaCitiesVC.swift */; };
+		11F1B7EE2032342100F87018 /* CustomCinemaMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F1B7ED2032342100F87018 /* CustomCinemaMovie.swift */; };
+		11F1B7F2203234B500F87018 /* CustomCinemaMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F1B7F1203234B500F87018 /* CustomCinemaMovieCell.swift */; };
 		5A278B6E485613AB6D1BF828 /* Pods_Nemeth_Balint_Szakdolgozat_v1.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55CAEE46578065F761357B31 /* Pods_Nemeth_Balint_Szakdolgozat_v1.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +71,8 @@
 		11A00E89202F182400A2E20C /* CustomCinemaCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaCity.swift; sourceTree = "<group>"; };
 		11A00E8B202F18F100A2E20C /* CustomCinemaCitiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaCitiesVC.swift; sourceTree = "<group>"; };
 		11A00E8D2030AFB400A2E20C /* CustomCinemaCinemaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaCinemaVC.swift; sourceTree = "<group>"; };
+		11F1B7ED2032342100F87018 /* CustomCinemaMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaMovie.swift; sourceTree = "<group>"; };
+		11F1B7F1203234B500F87018 /* CustomCinemaMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaMovieCell.swift; sourceTree = "<group>"; };
 		3DC28804E7D6A0043088163B /* Pods-Nemeth_Balint_Szakdolgozat_v1.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nemeth_Balint_Szakdolgozat_v1.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nemeth_Balint_Szakdolgozat_v1/Pods-Nemeth_Balint_Szakdolgozat_v1.debug.xcconfig"; sourceTree = "<group>"; };
 		55CAEE46578065F761357B31 /* Pods_Nemeth_Balint_Szakdolgozat_v1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nemeth_Balint_Szakdolgozat_v1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2F5F82E127EE8FFA1A6DE70 /* Pods-Nemeth_Balint_Szakdolgozat_v1.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nemeth_Balint_Szakdolgozat_v1.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nemeth_Balint_Szakdolgozat_v1/Pods-Nemeth_Balint_Szakdolgozat_v1.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 				11752EBA1FCB33B000A3156F /* CheckBox.swift */,
 				11A00E89202F182400A2E20C /* CustomCinemaCity.swift */,
 				113671952030B491003A7F2C /* CustomCinemaCinema.swift */,
+				11F1B7ED2032342100F87018 /* CustomCinemaMovie.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 				119D523A1F84094400F13C01 /* ShowingCell.swift */,
 				11A00E87202F16ED00A2E20C /* CustomCinemaCitiesCell.swift */,
 				113671932030B37E003A7F2C /* CustomCinemaCinemaCell.swift */,
+				11F1B7F1203234B500F87018 /* CustomCinemaMovieCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -334,6 +340,7 @@
 				11A00E8A202F182400A2E20C /* CustomCinemaCity.swift in Sources */,
 				113671942030B37E003A7F2C /* CustomCinemaCinemaCell.swift in Sources */,
 				11752EBF1FCB483000A3156F /* StartVC.swift in Sources */,
+				11F1B7F2203234B500F87018 /* CustomCinemaMovieCell.swift in Sources */,
 				11061FD51F812C01003591AC /* Cinema.swift in Sources */,
 				113671962030B491003A7F2C /* CustomCinemaCinema.swift in Sources */,
 				112FAD921F9E5A6400611335 /* DataService.swift in Sources */,
@@ -354,6 +361,7 @@
 				113671972030BFC6003A7F2C /* CustomCinemaCinemaVC.swift in Sources */,
 				112FAD8F1F9E551000611335 /* ResponseVC.swift in Sources */,
 				11A00E8C202F18F100A2E20C /* CustomCinemaCitiesVC.swift in Sources */,
+				11F1B7EE2032342100F87018 /* CustomCinemaMovie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
