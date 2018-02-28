@@ -12,7 +12,7 @@ import SwiftKeychainWrapper
 
 //URL of the database - reference - u can find it in the gooleservice-info.plist
 let DB_BASE = Database.database().reference()
-let STORAGE_BASE = Storage.storage().reference()
+let STORAGE_BASE = Storage.storage()
 
 class DataService {
     
@@ -25,6 +25,9 @@ class DataService {
     private var _REF_CITIES = DB_BASE.child("cities")
     private var _REF_CINEMAS = DB_BASE.child("cinemas")
     private var _REF_MOVIES = DB_BASE.child("Movies")
+    
+    //Storage references
+    private var _REF_STORAGE = STORAGE_BASE
     
     var REF_BASE: DatabaseReference {
         return _REF_BASE
@@ -47,6 +50,13 @@ class DataService {
     var REF_MOVIES: DatabaseReference {
         
         return _REF_MOVIES
+    }
+    
+    //-----------------
+    
+    var REF_STORAGE: Storage {
+        
+        return _REF_STORAGE
     }
     
     func createFirebaseDBUser(uid: String, userData: Dictionary<String, String>) {

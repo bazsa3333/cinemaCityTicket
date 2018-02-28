@@ -11,21 +11,21 @@ import Foundation
 class CustomCinemaCinema {
     
     private var _name: String!
-    private var _id: String!
+    private var _ids = [String]()
     
     var name: String {
         
         return _name
     }
     
-    var id: String {
+    var ids: [String] {
         
-        return _id
+        return _ids
     }
     
-    init(name: String, id: String) {
+    init(name: String, ids: [String]) {
         
         self._name = name
-        self._id = id
+        self._ids = ids
     }
 }
