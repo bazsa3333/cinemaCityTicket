@@ -27,6 +27,7 @@ class CustomCinemaMoviesVC: UIViewController, UITableViewDelegate, UITableViewDa
         parseMovies()
         
         //Working with time
+        //régi adatok törlése!!!
 //        let date = Date()
 //        let calendar = Calendar.current
 //        let year = calendar.component(.year, from: date)
@@ -69,41 +70,20 @@ class CustomCinemaMoviesVC: UIViewController, UITableViewDelegate, UITableViewDa
                         let id = movies.key
                         
                         let release = movieObject?["release"]
-                        print(release as! String)
                         let rating = movieObject?["rating"]
-                        print(rating as! String)
                         let description = movieObject?["description"]
-                        print(description as! String)
                         let genre = movieObject?["genre"]
-                        print(genre as! String)
                         let length = movieObject?["length"]
-                        print(length as! String)
                         
-                        let picture = "fifthyShadesOfFreed.jpg"
+                        let pictureUrl = movieObject?["picture"]
+
+                        let movie = CustomCinemaMovie(name: name as! String, id: id, cinemaName: cinemaName, picture: pictureUrl as! String, description: description as! String, genre: genre as! String, length: length as! String, rating: rating as! String, release: release as! String)
                         
-                        let movie = CustomCinemaMovie(name: name as! String, id: id, cinemaName: cinemaName, picture: picture, description: description as! String, genre: genre as! String, length: length as! String, rating: rating as! String, release: release as! String)
                         self.movies.append(movie)
-                        
-//                        let storageRef = Storage.storage().reference(forURL: "gs://szakdolgozat-2012b.appspot.com/").child("fifthyShadesOfFreed.jpg")
-//
-//
-//                        storageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
-//                            if let error = error {
-//
-//                                print("RITA: Error occured: \(error.localizedDescription)")
-//                            } else {
-//
-//                                let pic = UIImage(data: data!)
-//
-//                                let picture = data
-//
-//                                let movie = CustomCinemaMovie(name: name as! String, id: id, cinemaName: cinemaName, picture: picture!)
-//                                self.movies.append(movie)
-//                            }
-//                        }
                         }
                     
                 }
+                
             }
             self.tableView.reloadData()
         })

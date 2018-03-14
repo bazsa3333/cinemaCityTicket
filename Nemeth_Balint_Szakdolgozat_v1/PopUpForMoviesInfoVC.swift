@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PopUpForMoviesInfoVC: UIViewController {
 
@@ -23,7 +24,18 @@ class PopUpForMoviesInfoVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        imgView.image = UIImage(named: movie.picture)
+        let storageRef = Storage.storage().reference(forURL: movie.picture)
+        
+        storageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                
+                print(error.localizedDescription)
+            } else {
+                
+                self.imgView.image = UIImage(data: data!)
+            }
+        }
+
         titleLbl.text = movie.name
         genreLbl.text = movie.genre
         yearLbl.text = movie.release

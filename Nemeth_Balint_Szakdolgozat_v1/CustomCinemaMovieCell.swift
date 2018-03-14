@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 protocol CustomCinemaMovieCellDelegate {
     
@@ -23,7 +24,18 @@ class CustomCinemaMovieCell: UITableViewCell {
     func configureCell(movie: CustomCinemaMovie) {
         
         lbl.text = movie.name
-        imgView.image = UIImage(named: movie.picture)
+        
+        let storageRef = Storage.storage().reference(forURL: movie.picture)
+        
+        storageRef.getData(maxSize: 1 * 1024 * 1024) { data, error in
+            if let error = error {
+                
+                print(error.localizedDescription)
+            } else {
+                
+                self.imgView.image = UIImage(data: data!)
+            }
+        }
     }
     
     @IBAction func infoBtnTapped(_ sender: UIButton) {
