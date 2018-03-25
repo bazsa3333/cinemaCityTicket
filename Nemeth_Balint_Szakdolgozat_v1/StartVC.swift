@@ -14,6 +14,7 @@ class StartVC: UIViewController {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var logInBtn: UIButton!
+    @IBOutlet weak var signUpBtn: UIButton!
     
     var name: String?
     
@@ -23,6 +24,18 @@ class StartVC: UIViewController {
         navigationController?.navigationBar.barTintColor = UIColor(red: 0.72, green: 0.72, blue: 0.72, alpha: 1.00)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
@@ -30,6 +43,8 @@ class StartVC: UIViewController {
             print("BALINT: ID found in keychain")
             logInBtn.setImage(UIImage(named: "SignOutBtn"), for: UIControlState.normal)
             label.text = Auth.auth().currentUser?.displayName
+            signUpBtn.isHidden = true
+            label.isHidden = false
         }
     }
 
@@ -45,7 +60,13 @@ class StartVC: UIViewController {
             try! Auth.auth().signOut()
             logInBtn.setImage(UIImage(named: "LogInBtn"), for: UIControlState.normal)
             label.text = ""
+            label.isHidden = true
+            signUpBtn.isHidden = false
             
         }
+    }
+    @IBAction func signUpBtnTapped(_ sender: Any) {
+        
+        performSegue(withIdentifier: "RegisterVC", sender: nil)
     }
 }

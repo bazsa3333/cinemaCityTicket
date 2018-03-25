@@ -10,15 +10,22 @@ import Foundation
 
 class CustomCinemaShowingTime {
     
-    private var _time: String!
+    private var _hour: String!
+    private var _minute: String!
     
-    var time: String {
+    var hour: String {
         
-        return _time
+        return _hour
     }
     
-    init(time: String) {
+    var minute: String {
         
-        self._time = time
+        return _minute
+    }
+    
+    init(hour: String, minute: String) {
+        
+        self._hour = hour
+        self._minute = minute
     }
 }

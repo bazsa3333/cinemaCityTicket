@@ -138,12 +138,6 @@ class SignInVC: UIViewController {
         performSegue(withIdentifier: "backToStartVC", sender: nil)
     }
     
-    
-    @IBAction func signUpBtnPressed(_ sender: Any) {
-        
-        performSegue(withIdentifier: "RegisterVC", sender: nil)
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

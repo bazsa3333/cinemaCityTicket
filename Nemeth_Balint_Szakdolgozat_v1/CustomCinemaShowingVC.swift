@@ -34,11 +34,31 @@ class CustomCinemaShowingVC: UIViewController, UITableViewDelegate, UITableViewD
             for showings in snapshot.children.allObjects as! [DataSnapshot] {
                 
                 let showingObject = showings.value as? [String: AnyObject]
-                let date = showingObject?["date"]
+                let dateString = showingObject?["date"]
                 let dateId = showings.key
                 
-                let sh = CustomCinemaShowingDate(date: date as! String, movieId: (self.movie?.id)!, dateId: dateId, cinemaName: (self.movie?.cinemaName)!)
-                self.dates.append(sh)
+                //Working with time
+                //régi adatok törlése!!!
+                        let currentDate = Date()
+//                        let calendar = Calendar.current
+                //        let year = calendar.component(.year, from: date)
+                //        let hour = calendar.component(.hour, from: date)
+                //        let minutes = calendar.component(.minute, from: date)
+                //        print("RITA: \(year) \(hour):\(minutes)")
+                //
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy.MM.dd"
+                
+                        guard let date = dateFormatter.date(from: dateString as! String) else {
+                
+                            fatalError("RITA: ERROR és FATAL")
+                        }
+                
+                        if (currentDate <= date) {
+                            
+                            let sh = CustomCinemaShowingDate(date: dateString as! String, movieId: (self.movie?.id)!, dateId: dateId, cinemaName: (self.movie?.cinemaName)!)
+                            self.dates.append(sh)
+                        }
             }
             self.dateTableView.reloadData()
         })

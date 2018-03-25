@@ -27,6 +27,7 @@
 		113671962030B491003A7F2C /* CustomCinemaCinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113671952030B491003A7F2C /* CustomCinemaCinema.swift */; };
 		113671972030BFC6003A7F2C /* CustomCinemaCinemaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00E8D2030AFB400A2E20C /* CustomCinemaCinemaVC.swift */; };
 		113671992030C6A8003A7F2C /* CustomCinemaMoviesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113671982030C6A8003A7F2C /* CustomCinemaMoviesVC.swift */; };
+		1136E1A8206823E4009C45E6 /* NumberOfTicketsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1136E1A7206823E4009C45E6 /* NumberOfTicketsVC.swift */; };
 		1156F3232035F96C00E96D0D /* CustomCinemaShowingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156F3222035F96C00E96D0D /* CustomCinemaShowingVC.swift */; };
 		1156F3252035FAF800E96D0D /* CustomCinemaDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156F3242035FAF800E96D0D /* CustomCinemaDateCell.swift */; };
 		1156F3292035FDDA00E96D0D /* CustomCinemaShowingDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156F3282035FDDA00E96D0D /* CustomCinemaShowingDate.swift */; };
@@ -69,6 +70,7 @@
 		113671932030B37E003A7F2C /* CustomCinemaCinemaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaCinemaCell.swift; sourceTree = "<group>"; };
 		113671952030B491003A7F2C /* CustomCinemaCinema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaCinema.swift; sourceTree = "<group>"; };
 		113671982030C6A8003A7F2C /* CustomCinemaMoviesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaMoviesVC.swift; sourceTree = "<group>"; };
+		1136E1A7206823E4009C45E6 /* NumberOfTicketsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfTicketsVC.swift; sourceTree = "<group>"; };
 		1156F3222035F96C00E96D0D /* CustomCinemaShowingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaShowingVC.swift; sourceTree = "<group>"; };
 		1156F3242035FAF800E96D0D /* CustomCinemaDateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaDateCell.swift; sourceTree = "<group>"; };
 		1156F3282035FDDA00E96D0D /* CustomCinemaShowingDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaShowingDate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				11DE26732046CF14002252A3 /* PopUpForMoviesInfoVC.swift */,
 				1156F3222035F96C00E96D0D /* CustomCinemaShowingVC.swift */,
 				1156F32E203607A700E96D0D /* CustomCinemaTimeVC.swift */,
+				1136E1A7206823E4009C45E6 /* NumberOfTicketsVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				11061FDE1F814849003591AC /* MovieVC.swift in Sources */,
 				11061FC31F812307003591AC /* MainVC.swift in Sources */,
 				1156F3292035FDDA00E96D0D /* CustomCinemaShowingDate.swift in Sources */,
+				1136E1A8206823E4009C45E6 /* NumberOfTicketsVC.swift in Sources */,
 				11A9F6FF20365BC800EFF41E /* CustomCinemaShowingTime.swift in Sources */,
 				1156F3252035FAF800E96D0D /* CustomCinemaDateCell.swift in Sources */,
 				119D523D1F84095100F13C01 /* Showing.swift in Sources */,

@@ -37,11 +37,34 @@ class CustomCinemaTimeVC: UIViewController, UITableViewDelegate, UITableViewData
             for times in snapshot.children.allObjects as! [DataSnapshot] {
                 
                 let timeObject = times.value as? [String: AnyObject]
-                let time = timeObject?["time"]
+                let hour = timeObject?["hour"] as! String
+                let minute = timeObject?["minute"] as! String
+                                
+                let currentDate = Date()
+                let calendar = Calendar.current
+                let currentHour = calendar.component(.hour, from: currentDate)
+                let currentMinute = calendar.component(.minute, from: currentDate)
                 
-                let timeClass = CustomCinemaShowingTime(time: time as! String)
-                self.times.append(timeClass)
+                print("\(currentHour):\(currentMinute)")
+                
+                print("\(Int(hour)!):\(Int(minute)!)")
+                
+                if (currentHour < Int(hour)!) {
+                        
+                    let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute)
+                    self.times.append(timeClass)
+                }
+                
+                if (currentHour == Int(hour)!) {
+                    
+                    if (currentMinute <= Int(minute)!) {
+                        
+                        let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute)
+                        self.times.append(timeClass)
+                    }
+                }
             }
+            print(self.times.count)
             self.tableView.reloadData()
         })
     }

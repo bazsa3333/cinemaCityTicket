@@ -14,7 +14,7 @@ class CustomCinemaTimeCell: UITableViewCell {
     
     func configureCell(time: CustomCinemaShowingTime) {
         
-        lbl.text = time.time
+        lbl.text = "\(time.hour):\(time.minute)"
         
     }
 }

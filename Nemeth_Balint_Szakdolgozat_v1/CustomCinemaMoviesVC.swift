@@ -25,30 +25,6 @@ class CustomCinemaMoviesVC: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.dataSource = self
         
         parseMovies()
-        
-        //Working with time
-        //régi adatok törlése!!!
-//        let date = Date()
-//        let calendar = Calendar.current
-//        let year = calendar.component(.year, from: date)
-//        let hour = calendar.component(.hour, from: date)
-//        let minutes = calendar.component(.minute, from: date)
-//        print("RITA: \(year) \(hour):\(minutes)")
-//
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy.MM.dd"
-//
-//        guard let date2 = dateFormatter.date(from: "2017.01.17") else {
-//
-//            fatalError("RITA: ERROR és FATAL")
-//        }
-//
-//        print(calendar.component(.day, from: date2))
-//
-//        if (date > date2) {
-//
-//            print("nagyobb bazdmeg")
-//        }
     }
 
     func parseMovies() {
