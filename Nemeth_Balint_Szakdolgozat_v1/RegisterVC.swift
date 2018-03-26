@@ -44,7 +44,7 @@ class RegisterVC: UIViewController {
                         if let password = passwordField.text {
                             
                             if password.characters.count > 5 {
-                                
+                    
                                 if checkImg.isChecked == false {
                                     
                                     let alert = UIAlertController(title: "Terms and conditions", message: "You must accept the terms and conditions", preferredStyle: .alert)

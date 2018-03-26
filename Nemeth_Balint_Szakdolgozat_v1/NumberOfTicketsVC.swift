@@ -59,5 +59,6 @@ class NumberOfTicketsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBAction func okBtnTapped(_ sender: Any) {
         
         numberOfTickets = pickerView.selectedRow(inComponent: 0)
+        performSegue(withIdentifier: "SeatSelectorVC", sender: nil)
     }
 }
