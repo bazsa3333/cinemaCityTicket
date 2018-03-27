@@ -28,6 +28,8 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
     var selected_seat_limit:Int = 0
     var layout_type                = ""
     
+    var label = UILabel()
+    
     // MARK: - Init and Configuration
     
     func setSeatSize(_ size: CGSize){
@@ -40,26 +42,44 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
             var initial_seat_y: Int = 0
             var final_width: Int = 0
             
+            var row: Int = 1
+            var column: Int = 0
+            var indexForEmptyColumns: Int = 0
+            
             for i in 0..<map.characters.count {
-                let seat_at_position = map[i]
                 
+                let seat_at_position = map[i]
                 if seat_at_position == "A" {
-                    createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: true, isDisabled: false)
+                    column += 1
+                    indexForEmptyColumns = 0
+                    createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: true, isDisabled: false, row: row, column: column)
                     initial_seat_x += 1
                 } else if seat_at_position == "D" {
-                    createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: true, isDisabled: true)
+                    column += 1
+                    indexForEmptyColumns = 0
+                    createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: true, isDisabled: true, row: row, column: column)
                     initial_seat_x += 1
                 } else if seat_at_position == "U" {
-                    createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: false, isDisabled: false)
+                    column += 1
+                    indexForEmptyColumns = 0
+                    createSeatButtonWithPosition(initial_seat_x, and: initial_seat_y, isAvailable: false, isDisabled: false, row: row, column: column)
                     initial_seat_x += 1
                 } else if seat_at_position == "_" {
                     initial_seat_x += 1
+                    indexForEmptyColumns += 1
                 } else {
                     if initial_seat_x > final_width {
                         final_width = initial_seat_x
                     }
                     initial_seat_x = 0
                     initial_seat_y += 1
+                    
+                    if indexForEmptyColumns < 4 {
+                        
+                        row += 1
+                    }
+                    column = 0
+
                 }
             }
             
@@ -68,15 +88,40 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
             let newContentOffsetX: CGFloat = (self.contentSize.width - self.frame.size.width) / 2
             self.contentOffset = CGPoint(x: newContentOffsetX, y: 0)
             selected_seats = NSMutableArray()
-            
             self.delegate = self
             self.addSubview(zoomable_view)
+            
+//            label.frame = CGRect(x: 30, y: contentSize.height, width: contentSize.width, height: 50)
+//            label.textAlignment = NSTextAlignment.left
+//            
+//            var string: String = ""
+//            
+//            for i in 0..<21 {
+//                
+//                string += "\(String(i))   "
+//            }
+//            
+//            let attributedString = NSMutableAttributedString(string: string)
+//            
+//            // *** Create instance of `NSMutableParagraphStyle`
+//            let paragraphStyle = NSMutableParagraphStyle()
+//            
+//            // *** set LineSpacing property in points ***
+//            paragraphStyle.lineSpacing = 30 // Whatever line spacing you want in points
+//            
+//            // *** Apply attribute to string ***
+//            attributedString.addAttribute(NSParagraphStyleAttributeName, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+//            
+//            // *** Set Attributed String to your label ***
+//            label.attributedText = attributedString;
+//
+//            self.addSubview(label)
         } else {
            
         }
         
     }
-    func createSeatButtonWithPosition(_ initial_seat_x: Int, and initial_seat_y: Int, isAvailable available: Bool, isDisabled disabled: Bool) {
+    func createSeatButtonWithPosition(_ initial_seat_x: Int, and initial_seat_y: Int, isAvailable available: Bool, isDisabled disabled: Bool, row: Int, column: Int) {
     
         let seatButton = ZSeat(frame: CGRect(
                 x: CGFloat(initial_seat_x) * seat_width,
@@ -96,8 +141,10 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
         }
         seatButton.available = available
         seatButton.disabled = disabled
-        seatButton.row = initial_seat_y + 1
-        seatButton.column = initial_seat_x + 1
+//        seatButton.row = initial_seat_y + 1
+//        seatButton.column = initial_seat_x + 1
+        seatButton.row = row
+        seatButton.column = column
         seatButton.price = seat_price
         seatButton.addTarget(self, action: #selector(ZSeatSelector.seatSelected(_:)), for: .touchDown)
         zoomable_view.addSubview(seatButton)
@@ -202,3 +249,4 @@ extension String {
         return self[self.characters.index(self.startIndex, offsetBy: i)]
     }
 }
+

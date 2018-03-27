@@ -39,6 +39,7 @@ class CustomCinemaTimeVC: UIViewController, UITableViewDelegate, UITableViewData
                 let timeObject = times.value as? [String: AnyObject]
                 let hour = timeObject?["hour"] as! String
                 let minute = timeObject?["minute"] as! String
+                let timeId = times.key
                                 
                 let currentDate = Date()
                 let calendar = Calendar.current
@@ -49,19 +50,36 @@ class CustomCinemaTimeVC: UIViewController, UITableViewDelegate, UITableViewData
                 
                 print("\(Int(hour)!):\(Int(minute)!)")
                 
-                if (currentHour < Int(hour)!) {
-                        
-                    let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute)
-                    self.times.append(timeClass)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy.MM.dd"
+                
+                guard let date = dateFormatter.date(from: self.date?.date as! String) else {
+                    
+                    fatalError("RITA: ERROR és FATAL")
                 }
                 
-                if (currentHour == Int(hour)!) {
+                if (date == currentDate) {
                     
-                    if (currentMinute <= Int(minute)!) {
+                    if (currentHour < Int(hour)!) {
                         
-                        let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute)
+                        let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cinemaName: (self.date?.cinemaName)!)
                         self.times.append(timeClass)
                     }
+                
+                    if (currentHour == Int(hour)!) {
+                        
+                        if (currentMinute <= Int(minute)!) {
+                            
+                            let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cinemaName: (self.date?.cinemaName)!)
+                            self.times.append(timeClass)
+                        }
+                    }
+                    
+                } else {
+                    
+                    let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cinemaName: (self.date?.cinemaName)!)
+                    self.times.append(timeClass)
+
                 }
             }
             print(self.times.count)
@@ -80,6 +98,28 @@ class CustomCinemaTimeVC: UIViewController, UITableViewDelegate, UITableViewData
         }else {
             
             return CustomCinemaTimeCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var time: CustomCinemaShowingTime!
+        time = times[indexPath.row]
+        
+        performSegue(withIdentifier: "NumberOfTicketsVC", sender: time)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "NumberOfTicketsVC" {
+            
+            if let numberOfTicketsVC = segue.destination as? NumberOfTicketsVC {
+                
+                if let time = sender as? CustomCinemaShowingTime {
+                    
+                    numberOfTicketsVC.time = time
+                }
+            }
         }
     }
     

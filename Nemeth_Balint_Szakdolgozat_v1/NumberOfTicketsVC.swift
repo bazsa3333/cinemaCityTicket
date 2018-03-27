@@ -12,6 +12,8 @@ class NumberOfTicketsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
     @IBOutlet weak var pickerView: UIPickerView!
     
+    var time: CustomCinemaShowingTime?
+    
     var numberForPickerView = [String]()
     var numberOfTickets: Int = 0
     
@@ -51,14 +53,29 @@ class NumberOfTicketsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             pickerLabel?.textAlignment = .center
         }
         pickerLabel?.text = numberForPickerView[row]
-        pickerLabel?.textColor = UIColor.white
+        pickerLabel?.textColor = UIColor.black
         
         return pickerLabel!
     }
     
     @IBAction func okBtnTapped(_ sender: Any) {
         
-        numberOfTickets = pickerView.selectedRow(inComponent: 0)
-        performSegue(withIdentifier: "SeatSelectorVC", sender: nil)
+        numberOfTickets = (pickerView.selectedRow(inComponent: 0) + 1)
+        performSegue(withIdentifier: "SeatSelectorVC", sender: time)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "SeatSelectorVC" {
+            
+            if let seatSelectorVC = segue.destination as? SeatSelectorVC {
+                
+                if let time = sender as? CustomCinemaShowingTime {
+                    
+                    seatSelectorVC.time = time
+                    seatSelectorVC.seatLimit = self.numberOfTickets
+                }
+            }
+        }
     }
 }
