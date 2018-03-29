@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class selection {
     
@@ -38,36 +39,51 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
     var time: CustomCinemaShowingTime?
     var seatLimit: Int?
     
-    var map2:String =   "_DDDDDD_DDDDDD_DDDDDDDD_/" +
-                        "_AAAAAA_AAAAAA_DUUUAAAA_/" +
-                        "________________________/" +
-                        "_AAAAAUUAAAUAAAAUAAAAAAA/" +
-                        "_UAAUUUUUUUUUUUUUUUAAAAA/" +
-                        "_AAAAAAAAAAAUUUUUUUAAAAA/" +
-                        "_AAAAAAAAUAAAAUUUUAAAAAA/" +
-                        "_AAAAAUUUAUAUAUAUUUAAAAA/"
+    var map2: String!
+    let seats2 = ZSeatSelector()
+    
+//    var map2:String =   "_DDDDDD_DDDDDD_DDDDDDDD_/" +
+//                        "_AAAAAA_AAAAAA_DUUUAAAA_/" +
+//                        "________________________/" +
+//                        "_AAAAAUUAAAUAAAAUAAAAAAA/" +
+//                        "_UAAUUUUUUUUUUUUUUUAAAAA/" +
+//                        "_AAAAAAAAAAAUUUUUUUAAAAA/" +
+//                        "_AAAAAAAAUAAAAUUUUAAAAAA/" +
+//                        "_AAAAAUUUAUAUAUAUUUAAAAA/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(time?.cinemaName)
-        print(seatLimit)
+        parseSeats()
+        print("Rita: \(self.map2)")
+    }
+    
+    func parseSeats() {
         
-        let seats2 = ZSeatSelector()
-        seats2.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 300)
-        seats2.setSeatSize(CGSize(width: 25, height: 25))
-        seats2.setAvailableImage(   UIImage(named: "A")!,
-                                    andUnavailableImage:    UIImage(named: "U")!,
-                                    andDisabledImage:       UIImage(named: "D")!,
-                                    andSelectedImage:       UIImage(named: "S")!)
-        seats2.layout_type = "Normal"
-        seats2.setMap(map2)
-        seats2.seat_price           = 5.0
-        seats2.selected_seat_limit  = 2
-        seats2.seatSelectorDelegate = self
-        seats2.maximumZoomScale         = 5.0
-        seats2.minimumZoomScale         = 0.05
-        self.view.addSubview(seats2)
+        let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.dateId)!).child("showings").child((self.time?.dateId)!)
+        
+        ref.observe(DataEventType.value, with: { (snapshot) in
+            
+            let value = snapshot.value as? Dictionary<String, AnyObject>
+            let seatMap = value?["seatMap"] as? String
+            
+            self.map2 = seatMap!
+            
+            self.seats2.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 300)
+            self.seats2.setSeatSize(CGSize(width: 25, height: 25))
+            self.seats2.setAvailableImage(   UIImage(named: "A")!,
+                                             andUnavailableImage:    UIImage(named: "U")!,
+                                             andDisabledImage:       UIImage(named: "D")!,
+                                             andSelectedImage:       UIImage(named: "S")!)
+            self.seats2.layout_type = "Normal"
+            self.seats2.setMap(self.map2)
+            self.seats2.seat_price           = 5.0
+            self.seats2.selected_seat_limit  = self.seatLimit!
+            self.seats2.seatSelectorDelegate = self
+            self.seats2.maximumZoomScale         = 5.0
+            self.seats2.minimumZoomScale         = 0.05
+            self.view.addSubview(self.seats2)
+        })
     }
     
     func seatSelected(_ seat: ZSeat) {
@@ -125,6 +141,12 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
                 var chars = Array(map2.characters)
                 chars[i] = "U"
                 map2 = String(chars)
+                
+                let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.dateId)!).child("showings").child((self.time?.dateId)!).child("seatMap")
+                
+                ref.setValue(map2)
+                
+                performSegue(withIdentifier: "backToStartVC", sender: nil)
             }
         }
         print("RITA: \(map2)")

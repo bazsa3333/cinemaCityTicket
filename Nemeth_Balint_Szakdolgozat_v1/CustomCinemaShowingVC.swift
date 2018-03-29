@@ -27,40 +27,58 @@ class CustomCinemaShowingVC: UIViewController, UITableViewDelegate, UITableViewD
     
     func parseShowings() {
         
-        let ref = DataService.ds.REF_MOVIES.child((self.movie?.id)!).child("showing").child((self.movie?.cinemaName)!)
+//        let ref = DataService.ds.REF_MOVIES.child((self.movie?.id)!).child("showing").child((self.movie?.cinemaName)!)
+        
+        let ref = DataService.ds.REF_CINEMAS.child((movie?.cityName)!).child((movie?.cinemaNameId)!).child("movies")
         
         ref.observe(DataEventType.value, with: { (snapshot) in
-           
-            for showings in snapshot.children.allObjects as! [DataSnapshot] {
+            
+            for ids in snapshot.children.allObjects as! [DataSnapshot] {
                 
-                let showingObject = showings.value as? [String: AnyObject]
-                let dateString = showingObject?["date"]
-                let dateId = showings.key
+                let idObject = ids.value as? [String: AnyObject]
+                let id = idObject?["id"] as! String
                 
-                //Working with time
-                //régi adatok törlése!!!
-                        let currentDate = Date()
-//                        let calendar = Calendar.current
-                //        let year = calendar.component(.year, from: date)
-                //        let hour = calendar.component(.hour, from: date)
-                //        let minutes = calendar.component(.minute, from: date)
-                //        print("RITA: \(year) \(hour):\(minutes)")
-                //
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy.MM.dd"
-                
-                        guard let date = dateFormatter.date(from: dateString as! String) else {
-                
-                            fatalError("RITA: ERROR és FATAL")
-                        }
-                
-                        if (currentDate <= date) {
+                if id == self.movie?.id {
+                    
+                    if let showings = idObject?["showings"] as? [Dictionary<String, AnyObject>], showings.count > 0 {
+                        
+                        for x in 0..<showings.count {
                             
-                            let sh = CustomCinemaShowingDate(date: dateString as! String, movieId: (self.movie?.id)!, dateId: dateId, cinemaName: (self.movie?.cinemaName)!)
-                            self.dates.append(sh)
+                            let dateString = showings[x]["date"]
+                            let dateId = String(x)
+                            
+                            //Working with time
+                            let currentDate = Date().addingTimeInterval(7200)
+//                                    let calendar = Calendar.current
+                            //        let year = calendar.component(.year, from: date)
+                            //        let hour = calendar.component(.hour, from: date)
+                            //        let minutes = calendar.component(.minute, from: date)
+                            //        print("RITA: \(year) \(hour):\(minutes)")
+                            //
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy.MM.dd"
+            
+                            guard let date = dateFormatter.date(from: dateString as! String) else {
+            
+                                fatalError("RITA: Problem with the dateformatter!")
+                            }
+                            
+                            let goodDate = date.addingTimeInterval(93599)
+                            
+                            print(goodDate)
+                            print(currentDate)
+                            
+                            if (currentDate <= goodDate) {
+                                
+                                let sh = CustomCinemaShowingDate(date: dateString as! String, movieId: (self.movie?.id)!, dateId: dateId, cityName: (self.movie?.cityName)!, cinemaId: (self.movie?.cinemaNameId)!)
+                                self.dates.append(sh)
+                            }
                         }
+                        self.dateTableView.reloadData()
+                        }
+                }
+                
             }
-            self.dateTableView.reloadData()
         })
     }
     

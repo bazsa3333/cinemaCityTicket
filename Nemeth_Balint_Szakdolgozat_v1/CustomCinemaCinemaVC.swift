@@ -39,6 +39,7 @@ class CustomCinemaCinemaVC: UIViewController, UITableViewDelegate, UITableViewDa
                         
                         let cinemaObject = cinemaNames.value as? [String: AnyObject]
                         let name = cinemaObject?["name"]
+                        let nameId = cinemaNames.key
                         
                         if let movies = cinemaObject?["movies"] as? [Dictionary<String, AnyObject>], movies.count > 0 {
                             
@@ -49,7 +50,7 @@ class CustomCinemaCinemaVC: UIViewController, UITableViewDelegate, UITableViewDa
                                 let id = movies[x]["id"]
                                 ids.append(id as! String)
                             }
-                            let cinema = CustomCinemaCinema(name: name as! String, ids: ids)
+                            let cinema = CustomCinemaCinema(name: name as! String, ids: ids, nameId: nameId, cityName: self.city.name)
                             self.cinemas.append(cinema)
                         }
                     }

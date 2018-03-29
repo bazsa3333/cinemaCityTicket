@@ -11,7 +11,6 @@ import Firebase
 
 class CustomCinemaTimeVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     var times = [CustomCinemaShowingTime]()
@@ -23,61 +22,61 @@ class CustomCinemaTimeVC: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
-        dateLbl.text = date?.date
-        
         parseTime()
     }
     
     func parseTime() {
         
-        let ref = DataService.ds.REF_MOVIES.child((self.date?.movieId)!).child("showing").child((self.date?.cinemaName)!).child((self.date?.dateId)!).child("times")
-        
+        let ref = DataService.ds.REF_CINEMAS.child((self.date?.cityName)!).child((self.date?.cinemaId)!).child("movies").child((self.date?.dateId)!).child("showings").child((self.date?.dateId)!).child("times")
+
         ref.observe(DataEventType.value, with: { (snapshot) in
-            
+
             for times in snapshot.children.allObjects as! [DataSnapshot] {
-                
+
                 let timeObject = times.value as? [String: AnyObject]
                 let hour = timeObject?["hour"] as! String
                 let minute = timeObject?["minute"] as! String
                 let timeId = times.key
-                                
-                let currentDate = Date()
+
+                let currentDate = Date().addingTimeInterval(7200)
                 let calendar = Calendar.current
                 let currentHour = calendar.component(.hour, from: currentDate)
                 let currentMinute = calendar.component(.minute, from: currentDate)
-                
+
                 print("\(currentHour):\(currentMinute)")
-                
+
                 print("\(Int(hour)!):\(Int(minute)!)")
-                
+
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy.MM.dd"
-                
-                guard let date = dateFormatter.date(from: self.date?.date as! String) else {
-                    
+
+                guard let date = dateFormatter.date(from: (self.date?.date)!) else {
+
                     fatalError("RITA: ERROR és FATAL")
                 }
                 
-                if (date == currentDate) {
-                    
+                let goodDate = date.addingTimeInterval(93599)
+                
+                if (goodDate == currentDate) {
+
                     if (currentHour < Int(hour)!) {
-                        
-                        let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cinemaName: (self.date?.cinemaName)!)
+
+                        let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cityName: (self.date?.cityName)!, cinemaId: (self.date?.cinemaId)!)
                         self.times.append(timeClass)
                     }
-                
+
                     if (currentHour == Int(hour)!) {
-                        
+
                         if (currentMinute <= Int(minute)!) {
-                            
-                            let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cinemaName: (self.date?.cinemaName)!)
+
+                            let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cityName: (self.date?.cityName)!, cinemaId: (self.date?.cinemaId)!)
                             self.times.append(timeClass)
                         }
                     }
-                    
+
                 } else {
-                    
-                    let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cinemaName: (self.date?.cinemaName)!)
+
+                   let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cityName: (self.date?.cityName)!, cinemaId: (self.date?.cinemaId)!)
                     self.times.append(timeClass)
 
                 }

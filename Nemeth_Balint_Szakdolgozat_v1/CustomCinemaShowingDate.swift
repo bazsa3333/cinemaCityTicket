@@ -13,7 +13,8 @@ class CustomCinemaShowingDate {
     private var _date: String!
     private var _movieId: String!
     private var _dateId: String!
-    private var _cinameName: String!
+    private var _cityName: String!
+    private var _cinemaId: String!
     
     var date: String {
         
@@ -30,16 +31,22 @@ class CustomCinemaShowingDate {
         return _dateId
     }
     
-    var cinemaName: String {
+    var cityName: String {
         
-        return _cinameName
+        return _cityName
     }
     
-    init(date: String, movieId: String, dateId: String, cinemaName: String) {
+    var cinemaId: String {
+        
+        return _cinemaId
+    }
+    
+    init(date: String, movieId: String, dateId: String, cityName: String, cinemaId: String) {
         
         self._date = date
         self._movieId = movieId
         self._dateId = dateId
-        self._cinameName = cinemaName
+        self._cityName = cityName
+        self._cinemaId = cinemaId
     }
 }
