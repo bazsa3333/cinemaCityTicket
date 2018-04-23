@@ -32,21 +32,21 @@ class CustomCinemaShowingVC: UIViewController, UITableViewDelegate, UITableViewD
         let ref = DataService.ds.REF_CINEMAS.child((movie?.cityName)!).child((movie?.cinemaNameId)!).child("movies")
         
         ref.observe(DataEventType.value, with: { (snapshot) in
-            
+
             for ids in snapshot.children.allObjects as! [DataSnapshot] {
-                
+
                 let idObject = ids.value as? [String: AnyObject]
                 let id = idObject?["id"] as! String
-                
+
                 if id == self.movie?.id {
-                    
+
                     if let showings = idObject?["showings"] as? [Dictionary<String, AnyObject>], showings.count > 0 {
-                        
+
                         for x in 0..<showings.count {
-                            
+
                             let dateString = showings[x]["date"]
                             let dateId = String(x)
-                            
+
                             //Working with time
                             let currentDate = Date().addingTimeInterval(7200)
 //                                    let calendar = Calendar.current
@@ -57,19 +57,19 @@ class CustomCinemaShowingVC: UIViewController, UITableViewDelegate, UITableViewD
                             //
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "yyyy.MM.dd"
-            
+
                             guard let date = dateFormatter.date(from: dateString as! String) else {
-            
+
                                 fatalError("RITA: Problem with the dateformatter!")
                             }
-                            
+
                             let goodDate = date.addingTimeInterval(93599)
-                            
+
                             print(goodDate)
                             print(currentDate)
-                            
+
                             if (currentDate <= goodDate) {
-                                
+
                                 let sh = CustomCinemaShowingDate(date: dateString as! String, movieId: (self.movie?.id)!, dateId: dateId, cityName: (self.movie?.cityName)!, cinemaId: (self.movie?.cinemaNameId)!)
                                 self.dates.append(sh)
                             }
@@ -77,7 +77,7 @@ class CustomCinemaShowingVC: UIViewController, UITableViewDelegate, UITableViewD
                         self.dateTableView.reloadData()
                         }
                 }
-                
+
             }
         })
     }

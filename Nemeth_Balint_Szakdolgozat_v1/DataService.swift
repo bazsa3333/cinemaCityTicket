@@ -24,7 +24,8 @@ class DataService {
     private var _REF_USERS = DB_BASE.child("users")
     private var _REF_CITIES = DB_BASE.child("cities")
     private var _REF_CINEMAS = DB_BASE.child("cinemas")
-    private var _REF_MOVIES = DB_BASE.child("Movies")    
+    private var _REF_MOVIES = DB_BASE.child("Movies")
+    private var _REF_RESERVATIONS = DB_BASE.child("Reservations")
     //Storage references
     private var _REF_STORAGE = STORAGE_BASE
     
@@ -49,6 +50,11 @@ class DataService {
     var REF_MOVIES: DatabaseReference {
         
         return _REF_MOVIES
+    }
+    
+    var REF_RESERVATIONS: DatabaseReference {
+        
+        return _REF_RESERVATIONS
     }
     
     //-----------------

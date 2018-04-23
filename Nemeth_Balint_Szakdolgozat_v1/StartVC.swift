@@ -21,7 +21,6 @@ class StartVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationController?.navigationBar.barTintColor = UIColor(red: 0.72, green: 0.72, blue: 0.72, alpha: 1.00)
     }
     
     override func viewWillAppear(_ animated: Bool) {

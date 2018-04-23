@@ -39,50 +39,42 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
     var time: CustomCinemaShowingTime?
     var seatLimit: Int?
     
-    var map2: String!
-    let seats2 = ZSeatSelector()
+    var map: String!
+    let seats = ZSeatSelector()
     
-//    var map2:String =   "_DDDDDD_DDDDDD_DDDDDDDD_/" +
-//                        "_AAAAAA_AAAAAA_DUUUAAAA_/" +
-//                        "________________________/" +
-//                        "_AAAAAUUAAAUAAAAUAAAAAAA/" +
-//                        "_UAAUUUUUUUUUUUUUUUAAAAA/" +
-//                        "_AAAAAAAAAAAUUUUUUUAAAAA/" +
-//                        "_AAAAAAAAUAAAAUUUUAAAAAA/" +
-//                        "_AAAAAUUUAUAUAUAUUUAAAAA/"
+    var childrenCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         parseSeats()
-        print("Rita: \(self.map2)")
     }
     
     func parseSeats() {
         
-        let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.dateId)!).child("showings").child((self.time?.dateId)!)
+        let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.movieId)!).child("showings").child((self.time?.dateId)!).child("times").child((self.time?.timeId)!)
         
         ref.observe(DataEventType.value, with: { (snapshot) in
             
             let value = snapshot.value as? Dictionary<String, AnyObject>
             let seatMap = value?["seatMap"] as? String
             
-            self.map2 = seatMap!
+            self.map = seatMap!
             
-            self.seats2.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 300)
-            self.seats2.setSeatSize(CGSize(width: 25, height: 25))
-            self.seats2.setAvailableImage(   UIImage(named: "A")!,
+            self.seats.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 300)
+            self.seats.setSeatSize(CGSize(width: 25, height: 25))
+            self.seats.setAvailableImage(   UIImage(named: "A")!,
                                              andUnavailableImage:    UIImage(named: "U")!,
                                              andDisabledImage:       UIImage(named: "D")!,
                                              andSelectedImage:       UIImage(named: "S")!)
-            self.seats2.layout_type = "Normal"
-            self.seats2.setMap(self.map2)
-            self.seats2.seat_price           = 5.0
-            self.seats2.selected_seat_limit  = self.seatLimit!
-            self.seats2.seatSelectorDelegate = self
-            self.seats2.maximumZoomScale         = 5.0
-            self.seats2.minimumZoomScale         = 0.05
-            self.view.addSubview(self.seats2)
+            self.seats.layout_type = "Normal"
+            self.seats.setMap(self.map)
+//            self.seats.seat_price           = 5.0
+            self.seats.selected_seat_limit  = self.seatLimit!
+            self.seats.seatSelectorDelegate = self
+            self.seats.maximumZoomScale         = 5.0
+            self.seats.minimumZoomScale         = 0.05
+            self.view.addSubview(self.seats)
         })
     }
     
@@ -99,58 +91,95 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
             
             let seatS = selection(row: seat.row, column: seat.column)
             self.seatsSelected.append(seatS)
-            total += seat.price
         }
-        print("----- Total -----\n")
-        print("----- \(total) -----\n")
     }
     
     @IBAction func okBtnTapped(_ sender: Any) {
-        
-        print("Row: \(seatsSelected[(seatsSelected.count)-2].row), Column: \(seatsSelected[(seatsSelected.count)-2].column)")
-        print("Row: \(seatsSelected[(seatsSelected.count)-1].row), Column: \(seatsSelected[(seatsSelected.count)-1].column)")
         
         var column: Int = 0
         var row: Int = 1
         var indexForEmptyColumns: Int = 0
         
-        for i in 0..<self.map2.characters.count {
+        var reservedSeats = [Dictionary<String, String>]()
+        
+        if (self.seats.selected_seats.count != self.seats.selected_seat_limit) {
             
+            let alert = UIAlertController(title: "Error", message: "You didn't choose enough seats! If you change your mind, go back and modify the number of tickets!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+        
             
-            if (map2[i] == "A") || (map2[i] == "U") || (map2[i] == "D") {
-                
-                column += 1
-                indexForEmptyColumns = 0
-            } else if map2[i] == "_" {
-                
-                indexForEmptyColumns += 1
+            for i in 0..<self.map.characters.count {
 
-            } else {
-                
-                if indexForEmptyColumns < 4 {
-                    
-                    row += 1
+
+                if (map[i] == "A") || (map[i] == "U") || (map[i] == "D") {
+
+                    column += 1
+                    indexForEmptyColumns = 0
+                } else if map[i] == "_" {
+
+                    indexForEmptyColumns += 1
+
+                } else {
+
+                    if indexForEmptyColumns < 4 {
+
+                        row += 1
+                    }
+                    column = 0
                 }
-                column = 0
+                
+                print(self.seats.selected_seats.count)
+                
+                for index in 0..<self.seats.selected_seats.count {
+                    
+                    if(((row == (self.seats.selected_seats[index] as AnyObject).row)) && (column == (self.seats.selected_seats[index] as AnyObject).column)) {
+                        
+                        print("Rita \(row) \(column)")
+        
+                        var chars = Array(map.characters)
+                        chars[i] = "U"
+                        map = String(chars)
+                    }
+                }
             }
+            print("RITA: \(map)")
             
-            if ((row == seatsSelected[(seatsSelected.count)-2].row) && (column == seatsSelected[(seatsSelected.count)-2].column)) || ((row == seatsSelected[(seatsSelected.count)-1].row) && (column == seatsSelected[(seatsSelected.count)-1].column)) {
+            let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.movieId)!).child("showings").child((self.time?.dateId)!).child("times").child((self.time?.timeId)!).child("seatMap")
+            let ref2 = DataService.ds.REF_RESERVATIONS
+            let ref3 = DataService.ds.REF_USERS.child((Auth.auth().currentUser?.uid)!).child("reservations")
+            
+            for index in 0..<self.seats.selected_seats.count {
                 
-                print("Rita \(row) \(column)")
+                let reservedSeat = ["Seat": (String((self.seats.selected_seats[index] as AnyObject).row) + "/" + String((self.seats.selected_seats[index] as AnyObject).column))]
                 
-                var chars = Array(map2.characters)
-                chars[i] = "U"
-                map2 = String(chars)
-                
-                let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.dateId)!).child("showings").child((self.time?.dateId)!).child("seatMap")
-                
-                ref.setValue(map2)
-                
-                performSegue(withIdentifier: "backToStartVC", sender: nil)
+                reservedSeats.append(reservedSeat)
             }
+            let reservationData = ["cinemaId": self.time?.cinemaId,
+                                   "cityName": self.time?.cityName,
+                                   "movieId": self.time?.movieId,
+                                   "dateId": self.time?.dateId,
+                                   "timeId": self.time?.timeId,
+                                   "userId": Auth.auth().currentUser?.uid,
+                                   "tickets": reservedSeats] as [String : Any]
+            
+            
+            let uuid = UUID().uuidString
+            let data = [uuid: reservationData]
+            
+            let userData = ["id": uuid]
+            
+            ref.setValue(map)
+            ref2.updateChildValues(data)
+            ref3.childByAutoId().updateChildValues(userData)
+            
+            seatsSelected.removeAll()
+            
+            performSegue(withIdentifier: "backToStartVC", sender: nil)
         }
-        print("RITA: \(map2)")
-        seatsSelected.removeAll()
+        
+        
     }
     
 }

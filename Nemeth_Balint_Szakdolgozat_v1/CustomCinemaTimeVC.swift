@@ -27,7 +27,7 @@ class CustomCinemaTimeVC: UIViewController, UITableViewDelegate, UITableViewData
     
     func parseTime() {
         
-        let ref = DataService.ds.REF_CINEMAS.child((self.date?.cityName)!).child((self.date?.cinemaId)!).child("movies").child((self.date?.dateId)!).child("showings").child((self.date?.dateId)!).child("times")
+        let ref = DataService.ds.REF_CINEMAS.child((self.date?.cityName)!).child((self.date?.cinemaId)!).child("movies").child((self.date?.movieId)!).child("showings").child((self.date?.dateId)!).child("times")
 
         ref.observe(DataEventType.value, with: { (snapshot) in
 

@@ -8,20 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		11061FC11F812307003591AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FC01F812307003591AC /* AppDelegate.swift */; };
-		11061FC31F812307003591AC /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FC21F812307003591AC /* MainVC.swift */; };
 		11061FC61F812307003591AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11061FC41F812307003591AC /* Main.storyboard */; };
 		11061FC81F812307003591AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11061FC71F812307003591AC /* Assets.xcassets */; };
 		11061FCB1F812307003591AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11061FC91F812307003591AC /* LaunchScreen.storyboard */; };
-		11061FD31F81252C003591AC /* CinemaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FD21F81252C003591AC /* CinemaCell.swift */; };
-		11061FD51F812C01003591AC /* Cinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FD41F812C01003591AC /* Cinema.swift */; };
 		11061FD71F812E21003591AC /* Constans.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FD61F812E21003591AC /* Constans.swift */; };
-		11061FDE1F814849003591AC /* MovieVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FDD1F814849003591AC /* MovieVC.swift */; };
-		11061FE01F814A78003591AC /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FDF1F814A78003591AC /* MovieCell.swift */; };
-		11061FE21F814C8F003591AC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11061FE11F814C8F003591AC /* Movie.swift */; };
 		112790521F9FD2FD005C36AD /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112790511F9FD2FD005C36AD /* RegisterVC.swift */; };
 		112FAD8B1F9E4C6700611335 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112FAD8A1F9E4C6700611335 /* SignInVC.swift */; };
 		112FAD8D1F9E507600611335 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 112FAD8C1F9E507600611335 /* GoogleService-Info.plist */; };
-		112FAD8F1F9E551000611335 /* ResponseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112FAD8E1F9E551000611335 /* ResponseVC.swift */; };
 		112FAD921F9E5A6400611335 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112FAD911F9E5A6400611335 /* DataService.swift */; };
 		113671942030B37E003A7F2C /* CustomCinemaCinemaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113671932030B37E003A7F2C /* CustomCinemaCinemaCell.swift */; };
 		113671962030B491003A7F2C /* CustomCinemaCinema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113671952030B491003A7F2C /* CustomCinemaCinema.swift */; };
@@ -37,9 +30,6 @@
 		1156F32F203607A700E96D0D /* CustomCinemaTimeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156F32E203607A700E96D0D /* CustomCinemaTimeVC.swift */; };
 		11752EBB1FCB33B000A3156F /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11752EBA1FCB33B000A3156F /* CheckBox.swift */; };
 		11752EBF1FCB483000A3156F /* StartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11752EBE1FCB483000A3156F /* StartVC.swift */; };
-		119D52391F84092600F13C01 /* ShowingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D52381F84092600F13C01 /* ShowingVC.swift */; };
-		119D523B1F84094400F13C01 /* ShowingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D523A1F84094400F13C01 /* ShowingCell.swift */; };
-		119D523D1F84095100F13C01 /* Showing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119D523C1F84095100F13C01 /* Showing.swift */; };
 		11A00E88202F16ED00A2E20C /* CustomCinemaCitiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00E87202F16ED00A2E20C /* CustomCinemaCitiesCell.swift */; };
 		11A00E8A202F182400A2E20C /* CustomCinemaCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00E89202F182400A2E20C /* CustomCinemaCity.swift */; };
 		11A00E8C202F18F100A2E20C /* CustomCinemaCitiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00E8B202F18F100A2E20C /* CustomCinemaCitiesVC.swift */; };
@@ -53,21 +43,14 @@
 /* Begin PBXFileReference section */
 		11061FBD1F812307003591AC /* Nemeth_Balint_Szakdolgozat_v1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nemeth_Balint_Szakdolgozat_v1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11061FC01F812307003591AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		11061FC21F812307003591AC /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		11061FC51F812307003591AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11061FC71F812307003591AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11061FCA1F812307003591AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11061FCC1F812307003591AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		11061FD21F81252C003591AC /* CinemaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CinemaCell.swift; sourceTree = "<group>"; };
-		11061FD41F812C01003591AC /* Cinema.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cinema.swift; sourceTree = "<group>"; };
 		11061FD61F812E21003591AC /* Constans.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constans.swift; sourceTree = "<group>"; };
-		11061FDD1F814849003591AC /* MovieVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieVC.swift; sourceTree = "<group>"; };
-		11061FDF1F814A78003591AC /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
-		11061FE11F814C8F003591AC /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		112790511F9FD2FD005C36AD /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		112FAD8A1F9E4C6700611335 /* SignInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		112FAD8C1F9E507600611335 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		112FAD8E1F9E551000611335 /* ResponseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseVC.swift; sourceTree = "<group>"; };
 		112FAD911F9E5A6400611335 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		113671932030B37E003A7F2C /* CustomCinemaCinemaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaCinemaCell.swift; sourceTree = "<group>"; };
 		113671952030B491003A7F2C /* CustomCinemaCinema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaCinema.swift; sourceTree = "<group>"; };
@@ -82,9 +65,6 @@
 		1156F32E203607A700E96D0D /* CustomCinemaTimeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaTimeVC.swift; sourceTree = "<group>"; };
 		11752EBA1FCB33B000A3156F /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		11752EBE1FCB483000A3156F /* StartVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartVC.swift; sourceTree = "<group>"; };
-		119D52381F84092600F13C01 /* ShowingVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowingVC.swift; sourceTree = "<group>"; };
-		119D523A1F84094400F13C01 /* ShowingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowingCell.swift; sourceTree = "<group>"; };
-		119D523C1F84095100F13C01 /* Showing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Showing.swift; sourceTree = "<group>"; };
 		11A00E87202F16ED00A2E20C /* CustomCinemaCitiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaCitiesCell.swift; sourceTree = "<group>"; };
 		11A00E89202F182400A2E20C /* CustomCinemaCity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaCity.swift; sourceTree = "<group>"; };
 		11A00E8B202F18F100A2E20C /* CustomCinemaCitiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaCitiesVC.swift; sourceTree = "<group>"; };
@@ -151,9 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				113E197D20698D8D005F3740 /* ZSeatSelector.swift */,
-				11061FD41F812C01003591AC /* Cinema.swift */,
-				11061FE11F814C8F003591AC /* Movie.swift */,
-				119D523C1F84095100F13C01 /* Showing.swift */,
 				11752EBA1FCB33B000A3156F /* CheckBox.swift */,
 				11A00E89202F182400A2E20C /* CustomCinemaCity.swift */,
 				113671952030B491003A7F2C /* CustomCinemaCinema.swift */,
@@ -168,12 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				11752EBE1FCB483000A3156F /* StartVC.swift */,
-				11061FC21F812307003591AC /* MainVC.swift */,
-				11061FDD1F814849003591AC /* MovieVC.swift */,
-				119D52381F84092600F13C01 /* ShowingVC.swift */,
 				112FAD8A1F9E4C6700611335 /* SignInVC.swift */,
 				112790511F9FD2FD005C36AD /* RegisterVC.swift */,
-				112FAD8E1F9E551000611335 /* ResponseVC.swift */,
 				11A00E8B202F18F100A2E20C /* CustomCinemaCitiesVC.swift */,
 				11A00E8D2030AFB400A2E20C /* CustomCinemaCinemaVC.swift */,
 				113671982030C6A8003A7F2C /* CustomCinemaMoviesVC.swift */,
@@ -189,9 +162,6 @@
 		11061FDA1F81472F003591AC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				11061FD21F81252C003591AC /* CinemaCell.swift */,
-				11061FDF1F814A78003591AC /* MovieCell.swift */,
-				119D523A1F84094400F13C01 /* ShowingCell.swift */,
 				11A00E87202F16ED00A2E20C /* CustomCinemaCitiesCell.swift */,
 				113671932030B37E003A7F2C /* CustomCinemaCinemaCell.swift */,
 				11F1B7F1203234B500F87018 /* CustomCinemaMovieCell.swift */,
@@ -373,33 +343,23 @@
 				11752EBF1FCB483000A3156F /* StartVC.swift in Sources */,
 				11F1B7F2203234B500F87018 /* CustomCinemaMovieCell.swift in Sources */,
 				113E197E20698D8D005F3740 /* ZSeatSelector.swift in Sources */,
-				11061FD51F812C01003591AC /* Cinema.swift in Sources */,
 				1156F32B203602FD00E96D0D /* CustomCinemaTimeCell.swift in Sources */,
 				113671962030B491003A7F2C /* CustomCinemaCinema.swift in Sources */,
 				112FAD921F9E5A6400611335 /* DataService.swift in Sources */,
 				11A00E88202F16ED00A2E20C /* CustomCinemaCitiesCell.swift in Sources */,
-				11061FDE1F814849003591AC /* MovieVC.swift in Sources */,
-				11061FC31F812307003591AC /* MainVC.swift in Sources */,
 				1156F3292035FDDA00E96D0D /* CustomCinemaShowingDate.swift in Sources */,
 				1136E1A8206823E4009C45E6 /* NumberOfTicketsVC.swift in Sources */,
 				11A9F6FF20365BC800EFF41E /* CustomCinemaShowingTime.swift in Sources */,
 				1156F3252035FAF800E96D0D /* CustomCinemaDateCell.swift in Sources */,
-				119D523D1F84095100F13C01 /* Showing.swift in Sources */,
 				11061FD71F812E21003591AC /* Constans.swift in Sources */,
-				11061FE01F814A78003591AC /* MovieCell.swift in Sources */,
 				1156F3232035F96C00E96D0D /* CustomCinemaShowingVC.swift in Sources */,
 				11061FC11F812307003591AC /* AppDelegate.swift in Sources */,
-				119D52391F84092600F13C01 /* ShowingVC.swift in Sources */,
 				112790521F9FD2FD005C36AD /* RegisterVC.swift in Sources */,
-				119D523B1F84094400F13C01 /* ShowingCell.swift in Sources */,
 				113E198020698DE2005F3740 /* SeatSelectorVC.swift in Sources */,
 				11DE26742046CF14002252A3 /* PopUpForMoviesInfoVC.swift in Sources */,
 				113671992030C6A8003A7F2C /* CustomCinemaMoviesVC.swift in Sources */,
-				11061FD31F81252C003591AC /* CinemaCell.swift in Sources */,
 				112FAD8B1F9E4C6700611335 /* SignInVC.swift in Sources */,
-				11061FE21F814C8F003591AC /* Movie.swift in Sources */,
 				113671972030BFC6003A7F2C /* CustomCinemaCinemaVC.swift in Sources */,
-				112FAD8F1F9E551000611335 /* ResponseVC.swift in Sources */,
 				11A00E8C202F18F100A2E20C /* CustomCinemaCitiesVC.swift in Sources */,
 				11F1B7EE2032342100F87018 /* CustomCinemaMovie.swift in Sources */,
 			);

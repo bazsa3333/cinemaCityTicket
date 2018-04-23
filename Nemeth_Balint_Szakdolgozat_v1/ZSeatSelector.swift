@@ -49,6 +49,7 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
             for i in 0..<map.characters.count {
                 
                 let seat_at_position = map[i]
+                //legyen még egy nem elérhető kategoria fekete színnel
                 if seat_at_position == "A" {
                     column += 1
                     indexForEmptyColumns = 0
