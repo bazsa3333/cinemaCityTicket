@@ -42,22 +42,30 @@ class CustomCinemaMoviesVC: UIViewController, UITableViewDelegate, UITableViewDa
                         let movieObject = movies.value as? [String: AnyObject]
                         let name = movieObject?["name"]
                         let id = movies.key
-                        
-                        let release = movieObject?["release"]
                         let rating = movieObject?["rating"]
                         let description = movieObject?["description"]
                         let genre = movieObject?["genre"]
                         let length = movieObject?["length"]
-                        
                         let pictureUrl = movieObject?["picture"]
-
-                        let movie = CustomCinemaMovie(name: name as! String, id: id, cityName: self.cinema.cityName, cinemaNameId: self.cinema.nameId, picture: pictureUrl as! String, description: description as! String, genre: genre as! String, length: length as! String, rating: rating as! String, release: release as! String)
+                        let release = movieObject?["release"]
+                        
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy.MM.dd"
+                        guard let date = dateFormatter.date(from: release as! String) else {
+                            
+                            fatalError("RITA: Problem with the dateformatter!")
+                        }
+                        let goodDate = date.addingTimeInterval(32400)
+                        let goodDateString = String(describing: goodDate)
+                        let year = (goodDateString as NSString).substring(to: 4)
+                        print("RITA: \(year)")
+                        
+                            
+                        let movie = CustomCinemaMovie(name: name as! String, id: id, cityName: self.cinema.cityName, cinemaNameId: self.cinema.nameId, picture: pictureUrl as! String, description: description as! String, genre: genre as! String, length: length as! String, rating: rating as! String, release: year)
                         
                         self.movies.append(movie)
                         }
-                    
-                }
-                
+                }  
             }
             self.tableView.reloadData()
         })

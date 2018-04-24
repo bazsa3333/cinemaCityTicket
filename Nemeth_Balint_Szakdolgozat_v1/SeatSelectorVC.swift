@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class selection {
     
@@ -38,6 +39,7 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
     var seatsSelected = [selection]()
     var time: CustomCinemaShowingTime?
     var seatLimit: Int?
+    var userData: Dictionary<String, AnyObject>?
     
     var map: String!
     let seats = ZSeatSelector()
@@ -146,40 +148,72 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
             }
             print("RITA: \(map)")
             
-            let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.movieId)!).child("showings").child((self.time?.dateId)!).child("times").child((self.time?.timeId)!).child("seatMap")
-            let ref2 = DataService.ds.REF_RESERVATIONS
-            let ref3 = DataService.ds.REF_USERS.child((Auth.auth().currentUser?.uid)!).child("reservations")
+            if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             
-            for index in 0..<self.seats.selected_seats.count {
+                let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.movieId)!).child("showings").child((self.time?.dateId)!).child("times").child((self.time?.timeId)!).child("seatMap")
+                let ref2 = DataService.ds.REF_RESERVATIONS
+                let ref3 = DataService.ds.REF_USERS.child((Auth.auth().currentUser?.uid)!).child("reservations")
                 
-                let reservedSeat = ["Seat": (String((self.seats.selected_seats[index] as AnyObject).row) + "/" + String((self.seats.selected_seats[index] as AnyObject).column))]
+                for index in 0..<self.seats.selected_seats.count {
+                    
+                    let reservedSeat = ["Seat": (String((self.seats.selected_seats[index] as AnyObject).row) + "/" + String((self.seats.selected_seats[index] as AnyObject).column))]
+                    
+                    reservedSeats.append(reservedSeat)
+                }
+                let reservationData = ["cinemaId": self.time?.cinemaId,
+                                       "cityName": self.time?.cityName,
+                                       "movieId": self.time?.movieId,
+                                       "dateId": self.time?.dateId,
+                                       "timeId": self.time?.timeId,
+                                       "userId": Auth.auth().currentUser?.uid,
+                                       "tickets": reservedSeats] as [String : Any]
                 
-                reservedSeats.append(reservedSeat)
+                
+                let uuid = UUID().uuidString
+                let data = [uuid: reservationData]
+                
+                let userData = ["id": uuid]
+                
+                ref.setValue(map)
+                ref2.updateChildValues(data)
+                ref3.childByAutoId().updateChildValues(userData)
+                
+                seatsSelected.removeAll()
+            
+                performSegue(withIdentifier: "backToStartVC", sender: nil)
+                
+            } else {
+                
+                let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.movieId)!).child("showings").child((self.time?.dateId)!).child("times").child((self.time?.timeId)!).child("seatMap")
+                let ref2 = DataService.ds.REF_RESERVATIONS
+                
+                for index in 0..<self.seats.selected_seats.count {
+                    
+                    let reservedSeat = ["Seat": (String((self.seats.selected_seats[index] as AnyObject).row) + "/" + String((self.seats.selected_seats[index] as AnyObject).column))]
+                    
+                    reservedSeats.append(reservedSeat)
+                }
+                
+                let reservationData = ["cinemaId": self.time?.cinemaId,
+                                       "cityName": self.time?.cityName,
+                                       "movieId": self.time?.movieId,
+                                       "dateId": self.time?.dateId,
+                                       "timeId": self.time?.timeId,
+                                       "userId": self.userData,
+                                       "tickets": reservedSeats] as [String : Any]
+                
+                let uuid = UUID().uuidString
+                let data = [uuid: reservationData]
+                
+                ref.setValue(map)
+                ref2.updateChildValues(data)
+                
+                seatsSelected.removeAll()
+                
+                performSegue(withIdentifier: "backToStartVC", sender: nil)
+                }
+
             }
-            let reservationData = ["cinemaId": self.time?.cinemaId,
-                                   "cityName": self.time?.cityName,
-                                   "movieId": self.time?.movieId,
-                                   "dateId": self.time?.dateId,
-                                   "timeId": self.time?.timeId,
-                                   "userId": Auth.auth().currentUser?.uid,
-                                   "tickets": reservedSeats] as [String : Any]
-            
-            
-            let uuid = UUID().uuidString
-            let data = [uuid: reservationData]
-            
-            let userData = ["id": uuid]
-            
-            ref.setValue(map)
-            ref2.updateChildValues(data)
-            ref3.childByAutoId().updateChildValues(userData)
-            
-            seatsSelected.removeAll()
-            
-            performSegue(withIdentifier: "backToStartVC", sender: nil)
         }
-        
-        
-    }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftKeychainWrapper
 
 class NumberOfTicketsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -61,7 +62,15 @@ class NumberOfTicketsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     @IBAction func okBtnTapped(_ sender: Any) {
         
         numberOfTickets = (pickerView.selectedRow(inComponent: 0) + 1)
-        performSegue(withIdentifier: "SeatSelectorVC", sender: time)
+        
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            
+            performSegue(withIdentifier: "SeatSelectorVC", sender: time)
+        } else {
+            
+            performSegue(withIdentifier: "guestUserRegistrationVC", sender: time)
+        }
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -74,6 +83,18 @@ class NumberOfTicketsVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
                     
                     seatSelectorVC.time = time
                     seatSelectorVC.seatLimit = self.numberOfTickets
+                }
+            }
+        }
+        
+        if segue.identifier == "guestUserRegistrationVC" {
+            
+            if let guestUserRegistrationVC = segue.destination as? guestUserRegistrationVC {
+                
+                if let time = sender as? CustomCinemaShowingTime {
+                    
+                    guestUserRegistrationVC.time = time
+                    guestUserRegistrationVC.seatLimit = self.numberOfTickets
                 }
             }
         }

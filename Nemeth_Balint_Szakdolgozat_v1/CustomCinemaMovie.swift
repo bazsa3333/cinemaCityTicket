@@ -84,4 +84,15 @@ class CustomCinemaMovie {
         self._rating = rating
         self._release = release
     }
+    
+    init(name: String, rating: String, description: String, genre: String, length: String, picture: String, release: String) {
+        
+        self._name = name
+        self._rating = rating
+        self._description = description
+        self._genre = genre
+        self._length = length
+        self._picture = picture
+        self._release = release
+    }
 }
