@@ -55,8 +55,9 @@ class ComingSoonVC: UIViewController, UITableViewDelegate, UITableViewDataSource
                     let goodDate = date.addingTimeInterval(32400)
                     let goodDateString = String(describing: goodDate)
                     let year = (goodDateString as NSString).substring(to: 4)
+                    let comingOut = (goodDateString as NSString).substring(to: 10)
                     
-                    let movie = CustomCinemaMovie(name: name!, rating: rating!, description: description!, genre: genre!, length: length!, picture: pictureUrl!, release: year)
+                    let movie = CustomCinemaMovie(name: name!, rating: rating!, description: description!, genre: genre!, length: length!, picture: pictureUrl!, release: year, comingOut: comingOut)
                     
                     self.movies.append(movie)
                 }
@@ -74,6 +75,7 @@ class ComingSoonVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             
             let movie = movies[indexPath.row]
             cell.configureCell(movie: movie)
+            cell.comingOutLbl.text = movies[indexPath.row].comingOut
             
             return cell
         } else {

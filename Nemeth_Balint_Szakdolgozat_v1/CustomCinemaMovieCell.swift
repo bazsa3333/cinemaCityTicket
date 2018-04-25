@@ -18,6 +18,7 @@ class CustomCinemaMovieCell: UITableViewCell {
 
     @IBOutlet weak var lbl: UILabel!
     @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var comingOutLbl: UILabel!
     
     var delegate: CustomCinemaMovieCellDelegate!
     
