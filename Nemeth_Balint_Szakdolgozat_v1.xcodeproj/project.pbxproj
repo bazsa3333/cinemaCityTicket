@@ -43,6 +43,7 @@
 		11A00E8A202F182400A2E20C /* CustomCinemaCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00E89202F182400A2E20C /* CustomCinemaCity.swift */; };
 		11A00E8C202F18F100A2E20C /* CustomCinemaCitiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A00E8B202F18F100A2E20C /* CustomCinemaCitiesVC.swift */; };
 		11A9F6FF20365BC800EFF41E /* CustomCinemaShowingTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A9F6FE20365BC800EFF41E /* CustomCinemaShowingTime.swift */; };
+		11D6E52B20907636009FB7B3 /* Reservation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D6E52A20907636009FB7B3 /* Reservation.swift */; };
 		11DE26742046CF14002252A3 /* PopUpForMoviesInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DE26732046CF14002252A3 /* PopUpForMoviesInfoVC.swift */; };
 		11F1B7EE2032342100F87018 /* CustomCinemaMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F1B7ED2032342100F87018 /* CustomCinemaMovie.swift */; };
 		11F1B7F2203234B500F87018 /* CustomCinemaMovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F1B7F1203234B500F87018 /* CustomCinemaMovieCell.swift */; };
@@ -88,6 +89,7 @@
 		11A00E8B202F18F100A2E20C /* CustomCinemaCitiesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaCitiesVC.swift; sourceTree = "<group>"; };
 		11A00E8D2030AFB400A2E20C /* CustomCinemaCinemaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaCinemaVC.swift; sourceTree = "<group>"; };
 		11A9F6FE20365BC800EFF41E /* CustomCinemaShowingTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaShowingTime.swift; sourceTree = "<group>"; };
+		11D6E52A20907636009FB7B3 /* Reservation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reservation.swift; sourceTree = "<group>"; };
 		11DE26732046CF14002252A3 /* PopUpForMoviesInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpForMoviesInfoVC.swift; sourceTree = "<group>"; };
 		11F1B7ED2032342100F87018 /* CustomCinemaMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaMovie.swift; sourceTree = "<group>"; };
 		11F1B7F1203234B500F87018 /* CustomCinemaMovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCinemaMovieCell.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				11F1B7ED2032342100F87018 /* CustomCinemaMovie.swift */,
 				1156F3282035FDDA00E96D0D /* CustomCinemaShowingDate.swift */,
 				11A9F6FE20365BC800EFF41E /* CustomCinemaShowingTime.swift */,
+				11D6E52A20907636009FB7B3 /* Reservation.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			files = (
 				11752EBB1FCB33B000A3156F /* CheckBox.swift in Sources */,
 				11A00E8A202F182400A2E20C /* CustomCinemaCity.swift in Sources */,
+				11D6E52B20907636009FB7B3 /* Reservation.swift in Sources */,
 				111E2891208FE5E400F603E5 /* ReservationsCell.swift in Sources */,
 				11420467208F055300DF6DF0 /* ComingSoonVC.swift in Sources */,
 				113671942030B37E003A7F2C /* CustomCinemaCinemaCell.swift in Sources */,

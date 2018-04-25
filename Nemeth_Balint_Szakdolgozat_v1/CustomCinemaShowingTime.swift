@@ -18,7 +18,7 @@ class CustomCinemaShowingTime {
     private var _cityName: String!
     private var _cinemaId: String!
     
-    //    let ref = DataService.ds.REF_CINEMAS.child((date?.cityName)!).child((self.date?.cinemaId)!).child("movies").child((self.date?.dateId)!).child("showings").child("times")
+    private var _tickets: String!
     
     var hour: String {
         
@@ -55,6 +55,11 @@ class CustomCinemaShowingTime {
         return _cinemaId
     }
     
+    var tickets: String {
+        
+        return _tickets
+    }
+    
     init(hour: String, minute: String, timeId: String, movieId: String, dateId: String, cityName: String, cinemaId: String) {
         
         self._hour = hour
@@ -64,5 +69,15 @@ class CustomCinemaShowingTime {
         self._dateId = dateId
         self._cityName = cityName
         self._cinemaId = cinemaId
+    }
+    
+    init(cinemaId: String, movieId: String, dateId: String, timeId: String, tickets: String, cityName: String) {
+        
+        self._cinemaId = cinemaId
+        self._movieId = movieId
+        self._dateId = dateId
+        self._timeId = timeId
+        self._tickets = tickets
+        self._cityName = cityName
     }
 }

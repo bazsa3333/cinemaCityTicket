@@ -67,6 +67,7 @@ class CustomCinemaMoviesVC: UIViewController, UITableViewDelegate, UITableViewDa
                         }
                 }  
             }
+            self.movies.sort() { $0.name < $1.name }
             self.tableView.reloadData()
         })
     }

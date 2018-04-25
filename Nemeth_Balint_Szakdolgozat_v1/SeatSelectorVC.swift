@@ -44,8 +44,6 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
     var map: String!
     let seats = ZSeatSelector()
     
-    var childrenCount: Int = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -178,6 +176,8 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
                 ref2.updateChildValues(data)
                 ref3.childByAutoId().updateChildValues(userData)
                 
+                addUserInterest(time: self.time!)
+                
                 seatsSelected.removeAll()
             
                 performSegue(withIdentifier: "backToStartVC", sender: nil)
@@ -216,4 +216,222 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
             }
         }
     
+    func addUserInterest(time: CustomCinemaShowingTime) {
+        
+        var comma: Int = 0
+        
+        let movieRef = DataService.ds.REF_MOVIES.child(time.movieId)
+        movieRef.observe(DataEventType.value, with: { (snapshot) in
+            
+            let movieObject = snapshot.value as? [String: AnyObject]
+            let genre = movieObject?["genre"]?.lowercased as? String
+            
+            print(genre)
+            for i in 0..<(genre?.characters.count)! {
+                
+                if genre![i] == "," {
+                    comma += 1
+                }
+            }
+            print(comma)
+            if comma == 0 {
+                print("BELÉPTEM")
+                let genreRef = DataService.ds.REF_USERS.child((Auth.auth().currentUser?.uid)!).child("interest")
+                genreRef.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+                     for userGenre in snapshot.children.allObjects as! [DataSnapshot] {
+                        
+                        if userGenre.key == genre {
+                            
+                            let pushRef = DataService.ds.REF_USERS.child((Auth.auth().currentUser?.uid)!).child("interest").child(userGenre.key)
+                            var genreCount = userGenre.value as! Int
+                            genreCount += 1
+                            pushRef.setValue(genreCount)
+                        }
+                    }
+                })
+            } else {
+                
+                var genres = [String]()
+                var delimiter = ", "
+                genres = (genre?.components(separatedBy: delimiter))!
+                
+                for i in 0..<genres.count {
+                    
+                    let genreRef = DataService.ds.REF_USERS.child((Auth.auth().currentUser?.uid)!).child("interest")
+                    genreRef.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+                        
+                        for userGenre in snapshot.children.allObjects as! [DataSnapshot] {
+                            
+                            if userGenre.key == genres[i] {
+                                
+                                let pushRef = DataService.ds.REF_USERS.child((Auth.auth().currentUser?.uid)!).child("interest").child(userGenre.key)
+                                var genreCount = userGenre.value as! Int
+                                genreCount += 1
+                                pushRef.setValue(genreCount)
+                            }
+                        }
+                    })
+                }
+            }
+        })
+        
+        
+//        var absurdist: Int = 0
+//        var action: Int = 0
+//        var comedy: Int = 0
+//        var crime: Int = 0
+//        var drama: Int = 0
+//        var fantasy: Int = 0
+//        var historical: Int = 0
+//        var horror: Int = 0
+//        var magicalRealism: Int = 0
+//        var mystery: Int = 0
+//        var paranoid: Int = 0
+//        var philosophical: Int = 0
+//        var political: Int = 0
+//        var romance: Int = 0
+//        var saga: Int = 0
+//        var satire: Int = 0
+//        var scienceFiction: Int = 0
+//        var sliceOfLife: Int = 0
+//        var social: Int = 0
+//        var speculative: Int = 0
+//        var thriller: Int = 0
+//        var urban: Int = 0
+//        var western: Int = 0
+//
+//        let genreRef = DataService.ds.REF_USERS.child((Auth.auth().currentUser?.uid)!).child("interest")
+//        genreRef.observe(DataEventType.value, with: { (snapshot) in
+//
+//            for genre in snapshot.children.allObjects as! [DataSnapshot] {
+//
+//                if genre.key == "absurdist" {
+//                    absurdist = Int(genre.value as! String)!
+//                } else if genre.key == "action" {
+//                    action = Int(genre.value as! String)!
+//                } else if genre.key == "comedy" {
+//                    comedy = Int(genre.value as! String)!
+//                } else if genre.key == "crime" {
+//                    crime = Int(genre.value as! String)!
+//                } else if genre.key == "drama" {
+//                    drama = Int(genre.value as! String)!
+//                } else if genre.key == "fantasy" {
+//                    fantasy = Int(genre.value as! String)!
+//                } else if genre.key == "historical" {
+//                    historical = Int(genre.value as! String)!
+//                } else if genre.key == "horror" {
+//                    horror = Int(genre.value as! String)!
+//                } else if genre.key == "magicalRealism" {
+//                    magicalRealism = Int(genre.value as! String)!
+//                } else if genre.key == "mystery" {
+//                    mystery = Int(genre.value as! String)!
+//                } else if genre.key == "paranoid" {
+//                    paranoid = Int(genre.value as! String)!
+//                } else if genre.key == "philosophical" {
+//                    philosophical = Int(genre.value as! String)!
+//                } else if genre.key == "political" {
+//                    political = Int(genre.value as! String)!
+//                } else if genre.key == "romance" {
+//                    romance = Int(genre.value as! String)!
+//                } else if genre.key == "saga" {
+//                    saga = Int(genre.value as! String)!
+//                } else if genre.key == "satire" {
+//                    satire = Int(genre.value as! String)!
+//                } else if genre.key == "scienceFiction" {
+//                    scienceFiction = Int(genre.value as! String)!
+//                } else if genre.key == "sliceOfLife" {
+//                    sliceOfLife = Int(genre.value as! String)!
+//                } else if genre.key == "social" {
+//                    social = Int(genre.value as! String)!
+//                } else if genre.key == "speculative" {
+//                    speculative = Int(genre.value as! String)!
+//                } else if genre.key == "thriller" {
+//                    thriller = Int(genre.value as! String)!
+//                } else if genre.key == "urban" {
+//                    urban = Int(genre.value as! String)!
+//                } else {
+//                    western = Int(genre.value as! String)!
+//                }
+//            }
+//
+//            let ref = DataService.ds.REF_MOVIES.child(time.movieId)
+//            ref.observe(DataEventType.value, with: { (snapshot) in
+//
+//                let movieObject = snapshot.value as? [String: AnyObject]
+//                let genre = movieObject?["genre"]?.lowercased
+//
+//                if ((genre?.range(of: "absurdist")) != nil) {
+//                    absurdist += 1
+//                } else if genre?.range(of: "action") != nil {
+//                    action += 1
+//                }else if ((genre?.range(of: "comedy")) != nil) {
+//                    comedy += 1
+//                } else if ((genre?.range(of: "crime")) != nil) {
+//                    crime += 1
+//                } else if ((genre?.range(of: "drama")) != nil) {
+//                    drama += 1
+//                } else if ((genre?.range(of: "fantasy")) != nil) {
+//                    fantasy += 1
+//                } else if ((genre?.range(of: "historical")) != nil) {
+//                    historical += 1
+//                } else if ((genre?.range(of: "horror")) != nil) {
+//                    horror += 1
+//                } else if ((genre?.range(of: "magicalRealism")) != nil) {
+//                    magicalRealism += 1
+//                } else if ((genre?.range(of: "mystery")) != nil) {
+//                    mystery += 1
+//                } else if ((genre?.range(of: "paranoid")) != nil) {
+//                    paranoid += 1
+//                } else if ((genre?.range(of: "philosophical")) != nil) {
+//                    philosophical += 1
+//                } else if ((genre?.range(of: "political")) != nil) {
+//                    political += 1
+//                } else if ((genre?.range(of: "romance")) != nil) {
+//                    romance += 1
+//                } else if ((genre?.range(of: "saga")) != nil) {
+//                    saga += 1
+//                } else if ((genre?.range(of: "satire")) != nil) {
+//                    satire += 1
+//                } else if ((genre?.range(of: "scienceFiction")) != nil) {
+//                    scienceFiction += 1
+//                } else if ((genre?.range(of: "sliceOfLife")) != nil) {
+//                    sliceOfLife += 1
+//                } else if ((genre?.range(of: "social")) != nil) {
+//                    social += 1
+//                } else if ((genre?.range(of: "speculative")) != nil) {
+//                    speculative += 1
+//                } else if ((genre?.range(of: "thriller")) != nil) {
+//                    thriller += 1
+//                } else if ((genre?.range(of: "urban")) != nil) {
+//                    urban += 1
+//                } else {
+//                    western += 1
+//                }
+//
+//                let userData = ["absurdist": String(absurdist),
+//                                        "action": String(action),
+//                                        "comedy": String(comedy),
+//                                        "crime": String(crime),
+//                                        "drama": String(drama),
+//                                        "fantasy": String(fantasy),
+//                                        "historical": String(historical),
+//                                        "horror": String(horror),
+//                                        "magicalRealism": String(magicalRealism),
+//                                        "mystery": String(mystery),
+//                                        "paranoid": String(paranoid),
+//                                        "philosophical": String(philosophical),
+//                                        "political": String(political),
+//                                        "romance": String(romance),
+//                                        "saga": String(saga),
+//                                        "satire": String(satire),
+//                                        "scienceFiction": String(scienceFiction),
+//                                        "sliceOfLife": String(sliceOfLife),
+//                                        "social": String(social),
+//                                        "speculative": String(speculative),
+//                                        "thriller": String(thriller),
+//                                        "urban": String(urban),
+//                                        "western": String(western)]
+//            })
+//        })
+    }
 }

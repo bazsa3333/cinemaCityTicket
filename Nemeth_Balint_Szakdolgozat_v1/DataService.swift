@@ -64,7 +64,7 @@ class DataService {
         return _REF_STORAGE
     }
     
-    func createFirebaseDBUser(uid: String, userData: Dictionary<String, String>) {
+    func createFirebaseDBUser(uid: String, userData: Dictionary<String, AnyObject>) {
         
         REF_USERS.child(uid).updateChildValues(userData)
     }

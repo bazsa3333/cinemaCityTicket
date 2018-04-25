@@ -24,6 +24,7 @@ class StartVC: UIViewController {
         super.viewDidLoad()
         
         recommendationBtn.isHidden = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,10 +36,10 @@ class StartVC: UIViewController {
             
             print("BALINT: ID found in keychain")
             logInBtn.setImage(UIImage(named: "SignOutBtn"), for: UIControlState.normal)
+            label.isHidden = false
             label.text = Auth.auth().currentUser?.displayName
             signUpBtn.isHidden = true
             recommendationBtn.isHidden = false
-            label.isHidden = false
             profileBtn.isHidden = false
         }
     }

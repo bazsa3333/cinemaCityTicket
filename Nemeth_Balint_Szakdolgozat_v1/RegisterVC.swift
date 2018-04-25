@@ -65,8 +65,9 @@ class RegisterVC: UIViewController {
                                     
                                             let userData = ["provider": user.providerID,
                                                             "name": (firstName + " " + lastName),
-                                                            "email": email]
-                                            self.completeSignIn(id: user.uid, userData: userData)
+                                                            "email": email,
+                                                            "interest": constansUserData] as [String : Any]
+                                            self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, AnyObject>)
                                         }
                                     }
                                 })
@@ -84,12 +85,12 @@ class RegisterVC: UIViewController {
         }
     }
     
-    func completeSignIn(id: String, userData: Dictionary<String, String>) {
+    func completeSignIn(id: String, userData: Dictionary<String, AnyObject>) {
         
-        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData as Dictionary<String, AnyObject>)
         
         let chageRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-        chageRequest?.displayName = userData["name"]
+        chageRequest?.displayName = userData["name"] as! String
         chageRequest?.commitChanges(completion: { (error) in
             if error != nil {
                 
@@ -101,19 +102,6 @@ class RegisterVC: UIViewController {
         })
         
         let keychainResult = KeychainWrapper.standard.set(id, forKey: KEY_UID)
-        
-//        email confirmation...
-//        let user = Auth.auth().currentUser
-//        user?.sendEmailVerification(completion: { (error) in
-//
-//            if (error != nil) {
-//
-//                print("BALINT: Error occured sending the verification email")
-//            } else {
-//
-//                print("BALINT: Email was sent succesfully")
-//            }
-//        })
         
         print("BALINT Data saved to keychainresult: \(keychainResult)")
         

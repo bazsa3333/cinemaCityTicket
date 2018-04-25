@@ -65,6 +65,7 @@ class databaseVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
                 
                 
             }
+            self.movies.sort() { $0.name < $1.name }
             self.tableView.reloadData()
         })
     }

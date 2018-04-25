@@ -40,6 +40,7 @@ class CustomCinemaCitiesVC: UIViewController, UITableViewDataSource, UITableView
                 
                 print(city.name)
             }
+            self.cities.sort() { $0.name < $1.name }
             self.tableView.reloadData()
         })
     }
@@ -96,5 +97,4 @@ class CustomCinemaCitiesVC: UIViewController, UITableViewDataSource, UITableView
         
         return 80
     }
-    
 }

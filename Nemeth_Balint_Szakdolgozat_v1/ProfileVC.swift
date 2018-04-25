@@ -22,8 +22,12 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func reservationsBtnTapped(_ sender: Any) {
+        
+        performSegue(withIdentifier: "reservationsVC", sender: nil)
     }
     @IBAction func editProfileBtnTapped(_ sender: Any) {
+        
+        performSegue(withIdentifier: "editProfileVC", sender: nil)
     }
     
     @IBAction func changePasswordBtnTapped(_ sender: Any) {

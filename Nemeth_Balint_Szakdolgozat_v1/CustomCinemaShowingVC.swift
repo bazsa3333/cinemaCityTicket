@@ -74,6 +74,7 @@ class CustomCinemaShowingVC: UIViewController, UITableViewDelegate, UITableViewD
                                 self.dates.append(sh)
                             }
                         }
+                        self.dates.sort() { $0.date < $1.date }
                         self.dateTableView.reloadData()
                         }
                 }

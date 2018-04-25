@@ -62,7 +62,7 @@ class SignInVC: UIViewController {
                     if let user = user {
 
                         let userData = ["provider": user.providerID]
-                        self.completeSignIn(id: user.uid, userData: userData)
+                        self.completeSignIn(id: user.uid, userData: userData as Dictionary<String, AnyObject>)
                     }
                 } else {
                     
@@ -111,15 +111,16 @@ class SignInVC: UIViewController {
                     
                     let userData = ["provider": credential.provider,
                                     "name": Auth.auth().currentUser?.displayName,
-                                    "email": Auth.auth().currentUser?.email]
-                    self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, String>)
+                                    "email": Auth.auth().currentUser?.email,
+                                    "interest": constansUserData] as [String : Any]
+                    self.completeSignIn(id: user.uid, userData: userData as! Dictionary<String, AnyObject>)
                 }
                 
             }
         })
     }
     
-    func completeSignIn(id: String, userData: Dictionary<String, String>) {
+    func completeSignIn(id: String, userData: Dictionary<String, AnyObject>) {
         
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         

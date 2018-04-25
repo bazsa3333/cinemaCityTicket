@@ -81,7 +81,7 @@ class CustomCinemaTimeVC: UIViewController, UITableViewDelegate, UITableViewData
 
                 }
             }
-            print(self.times.count)
+            self.times.sort { ($0.hour + ":" + $0.minute) < ($1.hour + ":" + $1.minute) }
             self.tableView.reloadData()
         })
     }

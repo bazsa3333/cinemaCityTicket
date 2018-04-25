@@ -13,15 +13,20 @@ class ReservationsCell: UITableViewCell {
     @IBOutlet weak var movieNameLbl: UILabel!
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var reservationsLbl: UILabel!
+    @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var cinemaLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configureCell(reservations: Reservation) {
+        
+        movieNameLbl.text = reservations.name
+        dateLbl.text = reservations.date
+        reservationsLbl.text = reservations.seats
+        timeLbl.text = reservations.time
+        cinemaLbl.text = reservations.cinemaName
     }
-
 }
