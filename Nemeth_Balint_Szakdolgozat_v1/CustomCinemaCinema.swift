@@ -12,6 +12,7 @@ class CustomCinemaCinema {
     
     private var _name: String!
     private var _ids = [String]()
+    private var _movieIds = [String]()
     private var _nameId: String!
     private var _cityName: String!
     
@@ -25,6 +26,11 @@ class CustomCinemaCinema {
         return _ids
     }
     
+    var movieIds: [String] {
+        
+        return _movieIds
+    }
+    
     var nameId: String {
         
         return _nameId
@@ -35,11 +41,12 @@ class CustomCinemaCinema {
         return _cityName
     }
     
-    init(name: String, ids: [String], nameId: String, cityName: String) {
+    init(name: String, ids: [String], nameId: String, cityName: String, movieIds: [String]) {
         
         self._name = name
         self._ids = ids
         self._nameId = nameId
         self._cityName = cityName
+        self._movieIds = movieIds
     }
 }

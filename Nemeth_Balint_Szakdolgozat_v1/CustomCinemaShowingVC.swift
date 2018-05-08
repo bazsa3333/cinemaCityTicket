@@ -36,9 +36,9 @@ class CustomCinemaShowingVC: UIViewController, UITableViewDelegate, UITableViewD
             for ids in snapshot.children.allObjects as! [DataSnapshot] {
 
                 let idObject = ids.value as? [String: AnyObject]
-                let id = idObject?["id"] as! String
+//                let id = idObject?["id"] as! String
 
-                if id == self.movie?.id {
+                if ids.key == self.movie?.cinemaMovieId {
 
                     if let showings = idObject?["showings"] as? [Dictionary<String, AnyObject>], showings.count > 0 {
 
@@ -65,12 +65,9 @@ class CustomCinemaShowingVC: UIViewController, UITableViewDelegate, UITableViewD
 
                             let goodDate = date.addingTimeInterval(93599)
 
-                            print(goodDate)
-                            print(currentDate)
-
                             if (currentDate <= goodDate) {
 
-                                let sh = CustomCinemaShowingDate(date: dateString as! String, movieId: (self.movie?.id)!, dateId: dateId, cityName: (self.movie?.cityName)!, cinemaId: (self.movie?.cinemaNameId)!)
+                                let sh = CustomCinemaShowingDate(date: dateString as! String, movieId: (self.movie?.id)!, dateId: dateId, cityName: (self.movie?.cityName)!, cinemaId: (self.movie?.cinemaNameId)!, cinemaMovieId: (self.movie?.cinemaMovieId)!)
                                 self.dates.append(sh)
                             }
                         }

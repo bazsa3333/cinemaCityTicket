@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol ReservationCellDelegate {
+    
+    func deleteBtnTapped(cell: UITableViewCell)
+}
+
 class ReservationsCell: UITableViewCell {
 
     @IBOutlet weak var movieNameLbl: UILabel!
@@ -15,6 +20,8 @@ class ReservationsCell: UITableViewCell {
     @IBOutlet weak var reservationsLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
     @IBOutlet weak var cinemaLbl: UILabel!
+    
+    var delegate: ReservationCellDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,5 +35,10 @@ class ReservationsCell: UITableViewCell {
         reservationsLbl.text = reservations.seats
         timeLbl.text = reservations.time
         cinemaLbl.text = reservations.cinemaName
+    }
+    
+    @IBAction func deleteBtnTapped(_ sender: UIButton) {
+        
+        delegate.deleteBtnTapped(cell: self)
     }
 }

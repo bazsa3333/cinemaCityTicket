@@ -19,7 +19,7 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
     var seat_width:     CGFloat = 20.0
     var seat_height:    CGFloat = 20.0
     var selected_seats          = NSMutableArray()
-    var seat_price:     Float   = 10.0
+//    var seat_price:     Float   = 10.0
     var available_image     = UIImage()
     var unavailable_image   = UIImage()
     var disabled_image      = UIImage()
@@ -146,7 +146,7 @@ class ZSeatSelector: UIScrollView, UIScrollViewDelegate {
 //        seatButton.column = initial_seat_x + 1
         seatButton.row = row
         seatButton.column = column
-        seatButton.price = seat_price
+//        seatButton.price = seat_price
         seatButton.addTarget(self, action: #selector(ZSeatSelector.seatSelected(_:)), for: .touchDown)
         zoomable_view.addSubview(seatButton)
     }
@@ -242,7 +242,29 @@ class ZSeat: UIButton {
     var available:      Bool    = true;
     var disabled:       Bool    = true;
     var selected_seat:  Bool    = true;
-    var price:          Float   = 0.0
+//    var price:          Float   = 0.0
+}
+
+class selection {
+    
+    private var _row: Int!
+    private var _column: Int!
+    
+    var column: Int {
+        
+        return _column
+    }
+    
+    var row: Int {
+        
+        return _row
+    }
+    
+    init(row: Int, column: Int) {
+        
+        self._column = column
+        self._row = row
+    }
 }
 
 extension String {

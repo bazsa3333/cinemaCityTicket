@@ -28,7 +28,6 @@ class ComingSoonVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func parseMovie(){
         
         let ref = DataService.ds.REF_MOVIES
-        
         ref.observe(DataEventType.value, with: { (snapshot) in
             
             for movies in snapshot.children.allObjects as! [DataSnapshot] {

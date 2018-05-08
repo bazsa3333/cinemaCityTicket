@@ -163,7 +163,9 @@ class databaseVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             
             inSearchMode = true
             
-            filteredMovies = movies.filter({ $0.name.range(of: searchBar.text!) != nil })
+            let lower = searchBar.text?.lowercased()
+            
+            filteredMovies = movies.filter({ $0.name.range(of: lower!) != nil })
             
             tableView.reloadData()
             

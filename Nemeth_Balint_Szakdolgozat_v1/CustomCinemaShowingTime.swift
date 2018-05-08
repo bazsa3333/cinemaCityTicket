@@ -17,8 +17,9 @@ class CustomCinemaShowingTime {
     private var _dateId: String!
     private var _cityName: String!
     private var _cinemaId: String!
-    
     private var _tickets: String!
+    private var _cinemaMovieId: String!
+    private var _reservationId: String!
     
     var hour: String {
         
@@ -60,7 +61,17 @@ class CustomCinemaShowingTime {
         return _tickets
     }
     
-    init(hour: String, minute: String, timeId: String, movieId: String, dateId: String, cityName: String, cinemaId: String) {
+    var cinemaMovieId: String {
+        
+        return _cinemaMovieId
+    }
+    
+    var reservationId: String {
+        
+        return _reservationId
+    }
+    
+    init(hour: String, minute: String, timeId: String, movieId: String, dateId: String, cityName: String, cinemaId: String, cinemaMovieId: String) {
         
         self._hour = hour
         self._minute = minute
@@ -69,9 +80,10 @@ class CustomCinemaShowingTime {
         self._dateId = dateId
         self._cityName = cityName
         self._cinemaId = cinemaId
+        self._cinemaMovieId = cinemaMovieId
     }
     
-    init(cinemaId: String, movieId: String, dateId: String, timeId: String, tickets: String, cityName: String) {
+    init(cinemaId: String, movieId: String, dateId: String, timeId: String, tickets: String, cityName: String, cinemaMovieId: String, reservationId: String) {
         
         self._cinemaId = cinemaId
         self._movieId = movieId
@@ -79,5 +91,7 @@ class CustomCinemaShowingTime {
         self._timeId = timeId
         self._tickets = tickets
         self._cityName = cityName
+        self._cinemaMovieId = cinemaMovieId
+        self._reservationId = reservationId
     }
 }

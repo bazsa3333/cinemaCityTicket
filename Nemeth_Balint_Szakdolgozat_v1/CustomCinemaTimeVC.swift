@@ -27,7 +27,7 @@ class CustomCinemaTimeVC: UIViewController, UITableViewDelegate, UITableViewData
     
     func parseTime() {
         
-        let ref = DataService.ds.REF_CINEMAS.child((self.date?.cityName)!).child((self.date?.cinemaId)!).child("movies").child((self.date?.movieId)!).child("showings").child((self.date?.dateId)!).child("times")
+        let ref = DataService.ds.REF_CINEMAS.child((self.date?.cityName)!).child((self.date?.cinemaId)!).child("movies").child((self.date?.cinemaMovieId)!).child("showings").child((self.date?.dateId)!).child("times")
 
         ref.observe(DataEventType.value, with: { (snapshot) in
 
@@ -39,8 +39,9 @@ class CustomCinemaTimeVC: UIViewController, UITableViewDelegate, UITableViewData
                 let timeId = times.key
 
                 let currentDate = Date().addingTimeInterval(7200)
+                print("Rita: Current date: \(currentDate)")
                 let calendar = Calendar.current
-                let currentHour = calendar.component(.hour, from: currentDate)
+                let currentHour = calendar.component(.hour, from: currentDate) - 2
                 let currentMinute = calendar.component(.minute, from: currentDate)
 
                 print("\(currentHour):\(currentMinute)")
@@ -55,13 +56,16 @@ class CustomCinemaTimeVC: UIViewController, UITableViewDelegate, UITableViewData
                     fatalError("RITA: ERROR és FATAL")
                 }
                 
-                let goodDate = date.addingTimeInterval(93599)
                 
-                if (goodDate == currentDate) {
-
+//                let goodDate = date.addingTimeInterval(93599)
+                
+                let currentDateResult = dateFormatter.string(from: currentDate)
+                let dateResult = dateFormatter.string(from: date)
+                
+                if (currentDateResult == dateResult) {
                     if (currentHour < Int(hour)!) {
 
-                        let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cityName: (self.date?.cityName)!, cinemaId: (self.date?.cinemaId)!)
+                        let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cityName: (self.date?.cityName)!, cinemaId: (self.date?.cinemaId)!, cinemaMovieId: (self.date?.cinemaMovieId)!)
                         self.times.append(timeClass)
                     }
 
@@ -69,14 +73,14 @@ class CustomCinemaTimeVC: UIViewController, UITableViewDelegate, UITableViewData
 
                         if (currentMinute <= Int(minute)!) {
 
-                            let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cityName: (self.date?.cityName)!, cinemaId: (self.date?.cinemaId)!)
+                            let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cityName: (self.date?.cityName)!, cinemaId: (self.date?.cinemaId)!, cinemaMovieId: (self.date?.cinemaMovieId)!)
                             self.times.append(timeClass)
                         }
                     }
 
                 } else {
 
-                   let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cityName: (self.date?.cityName)!, cinemaId: (self.date?.cinemaId)!)
+                   let timeClass = CustomCinemaShowingTime(hour: hour, minute: minute, timeId: timeId, movieId: (self.date?.movieId)!, dateId: (self.date?.dateId)!, cityName: (self.date?.cityName)!, cinemaId: (self.date?.cinemaId)!, cinemaMovieId: (self.date?.cinemaMovieId)!)
                     self.times.append(timeClass)
 
                 }

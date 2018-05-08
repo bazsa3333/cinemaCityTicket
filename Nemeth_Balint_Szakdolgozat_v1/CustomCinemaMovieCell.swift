@@ -24,7 +24,7 @@ class CustomCinemaMovieCell: UITableViewCell {
     
     func configureCell(movie: CustomCinemaMovie) {
         
-        lbl.text = movie.name
+        lbl.text = movie.name.capitalized
         
         let storageRef = Storage.storage().reference(forURL: movie.picture)
         
@@ -43,5 +43,4 @@ class CustomCinemaMovieCell: UITableViewCell {
         
         delegate.infoBtnTapped(cell: self)
     }
-    
 }

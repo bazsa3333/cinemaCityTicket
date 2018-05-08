@@ -10,27 +10,27 @@ import UIKit
 import Firebase
 import SwiftKeychainWrapper
 
-class selection {
-    
-    private var _row: Int!
-    private var _column: Int!
-    
-    var column: Int {
-        
-        return _column
-    }
-    
-    var row: Int {
-        
-        return _row
-    }
-    
-    init(row: Int, column: Int) {
-        
-        self._column = column
-        self._row = row
-    }
-}
+//class selection {
+//
+//    private var _row: Int!
+//    private var _column: Int!
+//
+//    var column: Int {
+//
+//        return _column
+//    }
+//
+//    var row: Int {
+//
+//        return _row
+//    }
+//
+//    init(row: Int, column: Int) {
+//
+//        self._column = column
+//        self._row = row
+//    }
+//}
 
 class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
 
@@ -52,7 +52,7 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
     
     func parseSeats() {
         
-        let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.movieId)!).child("showings").child((self.time?.dateId)!).child("times").child((self.time?.timeId)!)
+        let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.cinemaMovieId)!).child("showings").child((self.time?.dateId)!).child("times").child((self.time?.timeId)!)
         
         ref.observe(DataEventType.value, with: { (snapshot) in
             
@@ -61,8 +61,8 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
             
             self.map = seatMap!
             
-            self.seats.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 300)
-            self.seats.setSeatSize(CGSize(width: 25, height: 25))
+            self.seats.frame = CGRect(x: 0, y: 250, width: self.view.frame.size.width, height: 250)
+            self.seats.setSeatSize(CGSize(width: 30, height: 30))
             self.seats.setAvailableImage(   UIImage(named: "A")!,
                                              andUnavailableImage:    UIImage(named: "U")!,
                                              andDisabledImage:       UIImage(named: "D")!,
@@ -148,7 +148,7 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
             
             if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             
-                let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.movieId)!).child("showings").child((self.time?.dateId)!).child("times").child((self.time?.timeId)!).child("seatMap")
+                let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.cinemaMovieId)!).child("showings").child((self.time?.dateId)!).child("times").child((self.time?.timeId)!).child("seatMap")
                 let ref2 = DataService.ds.REF_RESERVATIONS
                 let ref3 = DataService.ds.REF_USERS.child((Auth.auth().currentUser?.uid)!).child("reservations")
                 
@@ -161,6 +161,7 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
                 let reservationData = ["cinemaId": self.time?.cinemaId,
                                        "cityName": self.time?.cityName,
                                        "movieId": self.time?.movieId,
+                                       "cinemaMovieId": self.time?.cinemaMovieId,
                                        "dateId": self.time?.dateId,
                                        "timeId": self.time?.timeId,
                                        "userId": Auth.auth().currentUser?.uid,
@@ -184,7 +185,7 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
                 
             } else {
                 
-                let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.movieId)!).child("showings").child((self.time?.dateId)!).child("times").child((self.time?.timeId)!).child("seatMap")
+                let ref = DataService.ds.REF_CINEMAS.child((self.time?.cityName)!).child((self.time?.cinemaId)!).child("movies").child((self.time?.cinemaMovieId)!).child("showings").child((self.time?.dateId)!).child("times").child((self.time?.timeId)!).child("seatMap")
                 let ref2 = DataService.ds.REF_RESERVATIONS
                 
                 for index in 0..<self.seats.selected_seats.count {
@@ -197,6 +198,7 @@ class SeatSelectorVC: UIViewController, ZSeatSelectorDelegate {
                 let reservationData = ["cinemaId": self.time?.cinemaId,
                                        "cityName": self.time?.cityName,
                                        "movieId": self.time?.movieId,
+                                       "cinemaMovieId": self.time?.cinemaMovieId,
                                        "dateId": self.time?.dateId,
                                        "timeId": self.time?.timeId,
                                        "userId": self.userData,

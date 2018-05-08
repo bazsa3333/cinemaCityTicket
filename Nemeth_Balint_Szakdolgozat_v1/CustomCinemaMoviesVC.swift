@@ -48,6 +48,7 @@ class CustomCinemaMoviesVC: UIViewController, UITableViewDelegate, UITableViewDa
                         let length = movieObject?["length"]
                         let pictureUrl = movieObject?["picture"]
                         let release = movieObject?["release"]
+                        let cinemaMovieId = self.cinema.movieIds[x]
                         
                         let dateFormatter = DateFormatter()
                         dateFormatter.dateFormat = "yyyy.MM.dd"
@@ -61,7 +62,7 @@ class CustomCinemaMoviesVC: UIViewController, UITableViewDelegate, UITableViewDa
                         print("RITA: \(year)")
                         
                             
-                        let movie = CustomCinemaMovie(name: name as! String, id: id, cityName: self.cinema.cityName, cinemaNameId: self.cinema.nameId, picture: pictureUrl as! String, description: description as! String, genre: genre as! String, length: length as! String, rating: rating as! String, release: year)
+                        let movie = CustomCinemaMovie(name: name as! String, id: id, cityName: self.cinema.cityName, cinemaNameId: self.cinema.nameId, picture: pictureUrl as! String, description: description as! String, genre: genre as! String, length: length as! String, rating: rating as! String, release: year, cinemaMovieId: cinemaMovieId)
                         
                         self.movies.append(movie)
                         }

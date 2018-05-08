@@ -29,16 +29,14 @@ class CustomCinemaCitiesVC: UIViewController, UITableViewDataSource, UITableView
         let ref = DataService.ds.REF_CITIES
         
         ref.observe(DataEventType.value, with: { (snapshot) in
-            
+      
             for cities in snapshot.children.allObjects as! [DataSnapshot] {
-                
+
                 let cityObject = cities.value as? [String: AnyObject]
                 let name = cityObject?["name"]
-                
+
                 let city = CustomCinemaCity(name: name as! String)
                 self.cities.append(city)
-                
-                print(city.name)
             }
             self.cities.sort() { $0.name < $1.name }
             self.tableView.reloadData()

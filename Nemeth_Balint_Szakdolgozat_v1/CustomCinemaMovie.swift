@@ -21,6 +21,7 @@ class CustomCinemaMovie {
     private var _rating: String!
     private var _release: String!
     private var _comingOut: String!
+    private var _cinemaMovieId: String!
     
     var name: String {
         
@@ -77,7 +78,12 @@ class CustomCinemaMovie {
         return _comingOut
     }
     
-    init(name: String, id: String, cityName: String, cinemaNameId: String, picture: String, description: String, genre: String, length: String, rating: String, release: String) {
+    var cinemaMovieId: String {
+        
+        return _cinemaMovieId
+    }
+    
+    init(name: String, id: String, cityName: String, cinemaNameId: String, picture: String, description: String, genre: String, length: String, rating: String, release: String, cinemaMovieId: String) {
         
         self._name = name
         self._id = id
@@ -89,6 +95,7 @@ class CustomCinemaMovie {
         self._length = length
         self._rating = rating
         self._release = release
+        self._cinemaMovieId = cinemaMovieId
     }
     
     init(name: String, rating: String, description: String, genre: String, length: String, picture: String, release: String) {

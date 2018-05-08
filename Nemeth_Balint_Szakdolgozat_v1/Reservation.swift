@@ -15,6 +15,8 @@ class Reservation {
     private var _seats: String!
     private var _cinemaName: String!
     private var _time: String!
+    private var _reservationId: String!
+    private var _cityName: String!
     
     var name: String {
         
@@ -41,12 +43,24 @@ class Reservation {
         return _time
     }
     
-    init(name: String, date: String, seats: String, cinemaName: String, time: String) {
+    var reservationId: String {
+        
+        return _reservationId
+    }
+    
+    var cityName: String {
+        
+        return _cityName
+    }
+    
+    init(name: String, date: String, seats: String, cinemaName: String, time: String, reservationId: String, cityName: String) {
         
         self._name = name
         self._date = date
         self._seats = seats
         self._cinemaName = cinemaName
         self._time = time
+        self._reservationId = reservationId
+        self._cityName = cityName
     }
 }
