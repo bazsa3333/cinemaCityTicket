@@ -94,4 +94,12 @@ class CustomCinemaShowingTime {
         self._cinemaMovieId = cinemaMovieId
         self._reservationId = reservationId
     }
+    
+    init(cityName: String, cinemaId: String, movieId: String, cinemaMovieId: String) {
+        
+        self._cityName = cityName
+        self._cinemaId = cinemaId
+        self._movieId = movieId
+        self._cinemaMovieId = cinemaMovieId
+    }
 }

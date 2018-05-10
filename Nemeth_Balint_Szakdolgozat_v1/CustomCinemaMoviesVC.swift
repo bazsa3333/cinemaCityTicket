@@ -59,9 +59,7 @@ class CustomCinemaMoviesVC: UIViewController, UITableViewDelegate, UITableViewDa
                         let goodDate = date.addingTimeInterval(32400)
                         let goodDateString = String(describing: goodDate)
                         let year = (goodDateString as NSString).substring(to: 4)
-                        print("RITA: \(year)")
                         
-                            
                         let movie = CustomCinemaMovie(name: name as! String, id: id, cityName: self.cinema.cityName, cinemaNameId: self.cinema.nameId, picture: pictureUrl as! String, description: description as! String, genre: genre as! String, length: length as! String, rating: rating as! String, release: year, cinemaMovieId: cinemaMovieId)
                         
                         self.movies.append(movie)

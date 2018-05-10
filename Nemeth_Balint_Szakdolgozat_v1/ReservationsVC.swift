@@ -276,6 +276,8 @@ class ReservationsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                                     
                                     let deleteUserReservationRef = DataService.ds.REF_USERS.child((Auth.auth().currentUser?.uid)!).child("reservations").child(reservation.key)
                                     deleteUserReservationRef.removeValue()
+                                    
+                                    self.performSegue(withIdentifier: "back", sender: nil)
                                 }
                             }
                         })

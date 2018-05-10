@@ -56,9 +56,24 @@ class ByDateCinemaShowingVC: UIViewController, UITableViewDelegate, UITableViewD
                                     }
                                     
                                     if !helper {
-                                        
-                                        let date = CustomCinemaShowingDate(date: dateString!)
-                                        self.dates.append(date)
+
+                                        let currentDate = Date().addingTimeInterval(7200)
+                                        let dateFormatter = DateFormatter()
+                                        dateFormatter.dateFormat = "yyyy.MM.dd"
+
+                                        guard let date = dateFormatter.date(from: dateString as! String) else {
+
+                                            fatalError("RITA: Problem with the dateformatter!")
+                                        }
+
+                                        let goodDate = date.addingTimeInterval(93599)
+
+                                        if (currentDate <= goodDate) {
+
+                                            let sh = CustomCinemaShowingDate(date: dateString!)
+                                            self.dates.append(sh)
+
+                                        }
                                     }
                                 }
                             }
@@ -82,6 +97,28 @@ class ByDateCinemaShowingVC: UIViewController, UITableViewDelegate, UITableViewD
         }else {
             
             return CustomCinemaDateCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var date: CustomCinemaShowingDate!
+        date = dates[indexPath.row]
+        
+        performSegue(withIdentifier: "ByDateCinemaMoviesVC", sender: date)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ByDateCinemaMoviesVC" {
+            
+            if let byDateCinemaMoviesVC = segue.destination as? ByDateCinemaMoviesVC {
+                
+                if let date = sender as? CustomCinemaShowingDate {
+                    
+                    byDateCinemaMoviesVC.date = date
+                }
+            }
         }
     }
     
